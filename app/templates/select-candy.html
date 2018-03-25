@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block header %}
+	{{super()}}
+	<form action="logout" id="logout">
+		<span id="username">Logged in as {{ name }}</span>
+		<input class="action-button" id="logout-button" type="submit" value="Logout">
+	</form>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <h1>Welcome to the Candy4U</h1>
+			<p>Please select your candies ^^</p>
+    </div>
+  </div>
+{% endblock %}

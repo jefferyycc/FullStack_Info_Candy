@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class= "section">
+      <a href="{{ url_for('index') }}">Home</a>
+    </div>
+    <h2>Sign Up to Our Database</h2>
+    <form action="/signup" method="POST">
+  		<br>
+  		<p>
+  			<label for="username">Username</label>
+  			<input type="text" class="form-control" id="username" name="username" placeholder="Enter your username: ">
+  		</p>
+  		<br>
+  		<p>
+  			<label for="first_name">First Name</label>
+  			<input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter your First Name: ">
+  		</p>
+  		<br>
+      <p>
+  			<label for="last_name">Last Name</label>
+  			<input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter your Last Name: ">
+  		</p>
+  		<br>
+      <p>
+  			<label for="password">Password</label>
+  			<input type="text" class="form-control" id="password" name="password" placeholder="Enter your Password: ">
+  		</p>
+  		<br>
+  		<p>
+  			<input class="action-button" id="login" type="submit" value="Sign Up">
+  		</p>
+  	</form>
+  </div>
+</div>
+{% endblock %}
