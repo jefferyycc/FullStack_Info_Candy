@@ -1,0 +1,42 @@
+body {
+  padding-bottom: 40px;
+  background-color: #f9f9f9;
+}
+
+.head{
+  background-image:url("../pics/background.jpg");
+  background-size: 100%;
+  height:100px;
+  background-position: 50% 50%; 
+}
+
+
+h5
+{
+	font-weight: 400;
+}
+
+.container
+{
+	margin-top: 80px;
+	width: 400px;
+	height: 700px;
+}
+
+.tabs .indicator
+{
+	background-color: #e0f2f1;
+	height: 60px;
+	opacity: 0.3;
+}
+
+.form-container
+{
+	padding: 40px;
+	padding-top: 10px;
+}
+
+.confirmation-tabs-btn
+{
+	position: absolute;
+}

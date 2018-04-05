@@ -1,0 +1,134 @@
+<html>
+  <head>
+    <!-- Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"> -->
+    <link rel="stylesheet" href="../static/css/materialize.css">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/materialize.js"></script>
+    <script src="../static/js/interactions.js"></script>
+
+  </head>
+  <body>
+    <header>
+      <nav>
+    <div class="nav-wrapper red lighten-3">
+      <a href="#" class="brand-logo">Mr. J & Miss A</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Shopping Cart{{cart.number}}</a></li>
+        <li><a href="badges.html">Order</a></li>
+        <li><a href="collapsible.html">Account</a></li>
+      </ul>
+    </div>
+  </nav>
+      
+    </header>
+
+    <div class="container">
+    <div class="row" style="text-align:center">
+      <h1>Your shopping cart</h1>
+      
+        <table class="striped">
+        <thead>
+          <tr>
+              <th>Item Name</th>
+              <th>Item Quantity</th>
+              <th>Item Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+                  {% for notification in notifications %}
+                  <tr>
+                    <td>{{ notification.name }}</td>
+                    <td>{{ notification.quantity }}</td>
+                    <td>{{ notification.price }}</td>
+                    <td><button id="{{ notification['name'] }}" class="waves-effect waves-light btn-small grey lighten-1">Remove Item</button></td>
+                  </tr>
+                  {% endfor %}
+        </tbody>
+      </table>
+            
+            <div class= "place_order" style="margin: 20px">
+            <a class="waves-effect waves-light btn-large grey lighten-1"><i class="material-icons right">shopping_cart</i>Place Order</a>
+            </div>
+
+            <h1>You May Also Like...</h1>
+
+      <div class="col s4">
+    <div class="img_wrap">
+            
+            <img src="/static/pics/japanese/3.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+            <form action="/browse" class="middle" method="POST">
+              <input type="hidden" name="sequence" value="{{pic1.sequence}}"/>
+            <div class="text">{{pic1.name}}</div>
+            <div class="text">is hosting a</div>
+            <div class="text"><span>{{pic1.price}}&nbsp</span><span id="food1">{{pic1.food}}</span><span> meal</span></div>
+            <div class="text"><span>at </span><span>{{pic1.time}}</span></div>
+            <div style="padding:5px"></div>
+            
+            </form>
+      </div>
+      </div>
+          <div class="col s4">
+    <div class="img_wrap">
+            <img src="/static/pics/japanese/3.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+            <form action="/browse" class="middle" method="POST">
+              <input type="hidden" name="sequence" value="{{pic1.sequence}}"/>
+            <div class="text">{{pic1.name}}</div>
+            <div class="text">is hosting a</div>
+            <div class="text"><span>{{pic1.price}}&nbsp</span><span id="food1">{{pic1.food}}</span><span> meal</span></div>
+            <div class="text"><span>at </span><span>{{pic1.time}}</span></div>
+            <div style="padding:5px"></div>
+
+            </form>
+      </div>
+      </div>
+
+    <div class="col s4">
+    <div class="img_wrap">
+            <img src="/static/pics/japanese/3.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+            <form action="/browse" class="middle" method="POST">
+              <input type="hidden" name="sequence" value="{{pic1.sequence}}"/>
+            <div class="text">{{pic1.name}}</div>
+            <div class="text">is hosting a</div>
+            <div class="text"><span>{{pic1.price}}&nbsp</span><span id="food1">{{pic1.food}}</span><span> meal</span></div>
+            <div class="text"><span>at </span><span>{{pic1.time}}</span></div>
+            <div style="padding:5px"></div>
+
+            </form>
+      </div>
+      </div>
+
+      </div>
+      </div>
+
+        <footer class="page-footer red lighten-3">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2018 Copyright Mr. J & Miss A
+            </div>
+          </div>
+        </footer>
+      
+  </body>
+</html>

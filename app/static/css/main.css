@@ -5,7 +5,7 @@ html, body {
 	height:100%;
 }
 
-header {
+/*header {
 	background-color: #1abc9c;
 	box-shadow: 0 2px 6px 1px #a7a7a7;
 	color: #ecf0f1;
@@ -20,7 +20,7 @@ footer {
 	margin-top: 10em;
 	text-align: center;
 	width: 100%;
-}
+}*/
 
 footer p {
 	height: 7rem;
