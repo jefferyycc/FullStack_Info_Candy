@@ -1,0 +1,43 @@
+body{
+	background-image:url("../pics/thankyou.png");
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 0px -70px;
+  height:100%;
+}
+
+.Title{
+	margin-top:10%;
+	font-size: 3em;
+  color:white;
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+}
+
+.login{
+	margin:0 46.5% auto 46.5%;
+}
+
+.separator-container {
+  text-align: center;
+  position: relative;
+}
+.separator-container .separator {
+  color: #c5a47e;
+  margin: 0 auto 5px;
+  width: 11em;
+}
+.separator-container .separator.line-separator:before, .separator-container .separator.line-separator:after {
+  display: block;
+  width: 40%;
+  content: " ";
+  margin-top: 14px;
+  border: 1px solid #c5a47e;
+}
+.separator-container .separator.line-separator:before {
+  float: left;
+}
+.separator-container .separator.line-separator:after {
+  float: right;
+}
