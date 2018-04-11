@@ -49,15 +49,19 @@ def logout():
 
 @app.route('/create_user', methods=['GET', 'POST'])
 def create_user():
+    None
 
-@app.route('/order')
-def display_order():
+#@app.route('/order')
+#def display_order():
+#    None
 
 @app.route('/create-order', methods=['GET', 'POST'])
 def create_order():
+    None
 
 @app.route('/remove-order/<value>')
 def remove_order(value):
+    None
 
 # 404 errohandler
 @app.errorhandler(404)

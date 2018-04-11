@@ -17,4 +17,4 @@ class UserForm(Form):
     password = PasswordField('password', validators=[DataRequired()])
     """
 
-class TripForm(Form):
+#class TripForm(Form):
