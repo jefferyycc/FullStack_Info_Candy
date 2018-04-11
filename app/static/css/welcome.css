@@ -2,9 +2,10 @@ body{
 	background-image:url("../pics/background.jpg");
   position: relative;
   background-repeat: no-repeat;
-  background-size: 100%;
+  /*background-size: 100%;*/
   background-position: 0px -70px;
   height:100%;
+  background-size: cover; 
 }
 
 .Title{
@@ -40,4 +41,16 @@ body{
 }
 .separator-container .separator.line-separator:after {
   float: right;
+}
+
+.login-btn{
+  width: 50%;
+  position: relative;
+
+}
+
+.register-btn{
+  width: 50%;
+  position: relative;
+
 }

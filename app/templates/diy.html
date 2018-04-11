@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <!-- Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"> -->
+    <link rel="stylesheet" href="../static/css/materialize.css">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <!-- Compiled and minified JavaScript -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <script src="../static/js/materialize.js"></script>
+    <script src="../static/js/interactions.js"></script>
+
+  </head>
+  <body>
+    <header>
+     <div class="navbar-fixed">
+      <nav>
+    <div class="nav-wrapper red lighten-3">
+      <a href="#" class="left brand-logo">Mr. J & Miss A</a>
+
+      <ul id="nav-mobile" class="right">
+        <span>Welcome</span><span> {{ user || safe}}</span>
+        <li><a href="choose.html">Home</a></li>
+        <li><a href="shoppingcart.html">Shopping Cart{{cart.number}}</a></li>
+        <li><a href="order.html">Order</a></li>
+        <!-- <li><a href="account.html">Account</a></li>       -->
+      </ul>
+    </div>
+  </nav>
+  </div>
+      
+    </header>
+
+
+  <div class="parallax-container">
+    <div class="parallax"><img src="../static/pics/diy.jpg"></div>
+  </div>
+  <form action="/diy" method="POST">
+  <div class="container">
+  <div class="row" style="text-align:center">
+      <i class="material-icons medium">looks_one</i><h1> Choose your candy box and size</h1>
+      <div class="input-field col s12 m6">
+    <select>
+      <option value="" disabled selected>Choose your option</option>
+      <option value="one">1</option>
+      <option value="two">2</option>
+      <option value="three">3</option>
+      <option value="four">4</option>
+      <option value="five">5</option>
+      <option value="six">6</option>
+      <option value="seven">7</option>
+      <option value="eight">8</option>
+      <option value="nine">9</option>
+      <option value="ten">10</option>
+    </select>
+    <label>Number of Box</label>
+  </div>
+        <div class="input-field col s12 m6">
+    <select>
+      <option value="" disabled selected>Choose your option</option>
+      <option value="large">Large</option>
+      <option value="medium">Medium</option>
+      <option value="small">Small</option>
+    </select>
+    <label>Box Size</label>
+  </div>
+  </div>
+  </div>
+
+  <div class="parallax-container">
+    <div class="parallax"><img src="../static/pics/diy.jpg"></div>
+  </div>
+  <div class="container">
+    <div class="row" style="text-align:center">
+      <i class="material-icons medium">looks_two</i><h1> Select your candies</h1>
+        <div class="input-field col s12">
+    <select multiple class="icons">
+      <option value="" disabled selected>Choose your option</option>
+      <option value="milk" data-icon="../static/pics/candy-falvor/milk.jpg">Milk</option>
+      <option value="chocolate" data-icon="../static/pics/candy-falvor/chocolate.jpg">Chocolate</option>
+      <option value="almond" data-icon="../static/pics/candy-falvor/almond.jpg">Almond</option>
+      <option value="spicy" data-icon="../static/pics/candy-falvor/spicy.jpg">Spicy</option>
+      <option value="lukcy" data-icon="../static/pics/candy-falvor/lucky.jpg">Lucky Draw</option>
+    </select>
+    <label>Candy Flavor</label>
+  </div>
+  </div>
+  </div>
+
+
+
+  </div>
+  <div class="parallax-container">
+    <div class="parallax"><img src="../static/pics/diy2.jpg"></div>
+  </div>
+
+      <div class="container">
+    <div class="row" style="text-align:center">
+      <i class="material-icons medium">looks_3</i><h1> Select your candies</h1>
+      <div class="input-field col s12">
+    <select>
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+    <label>Materialize Select</label>
+  </div>
+
+  <button type="submit" class="waves-effect waves-light btn-large grey lighten-1" id="submit">Add to Cart</button>
+
+  </div>
+  </div>
+  </form>
+
+
+    
+    
+        <footer class="page-footer red lighten-3">
+          <div class="footer-copyright red lighten-3">
+            © 2018 Copyright Mr. J & Miss A
+          </div>
+        </footer>
+      
+  </body>
+</html>

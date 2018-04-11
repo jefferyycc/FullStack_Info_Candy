@@ -17,9 +17,10 @@
     <div class="nav-wrapper red lighten-3">
       <a href="#" class="brand-logo">Mr. J & Miss A</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Shopping Cart{{cart.number}}</a></li>
-        <li><a href="badges.html">Order</a></li>
-        <li><a href="collapsible.html">Account</a></li>
+        <span>Welcome</span><span> {{ user || safe}}</span>
+        <li><a href="choose.html">Home</a></li>
+        <li><a href="shoppingcart.html">Shopping Cart{{cart.number}}</a></li>
+        <li><a href="order.html">Order</a></li>
       </ul>
     </div>
   </nav>
@@ -57,22 +58,22 @@
       <div class="col s6">
     <div class="img_wrap">
             
-            <img src="../static/pics/venmo.png" alt="" id="image1" class="img-responsive rounded image" style='width:75%;height:260px'/>
-            <form action="/browse" class="middle" method="POST">
+            <a href = "thankyou.html"> <img src="../static/pics/venmo.png" alt="" id="venmo" class="img-responsive rounded image" style='width:75%;height:260px'/></a>
+            <!-- <form action="/browse" class="middle" method="POST">
               <input type="hidden" name="sequence" value="{{pic1.sequence}}"/>
             <div class="text">{{pic1.name}}</div>
             <div class="text">is hosting a</div>
             <div class="text"><span>{{pic1.price}}&nbsp</span><span id="food1">{{pic1.food}}</span><span> meal</span></div>
             <div class="text"><span>at </span><span>{{pic1.time}}</span></div>
-            <div style="padding:5px"></div>
+            <div style="padding:5px"></div> -->
             
             </form>
       </div>
       </div>
           <div class="col s6">
     <div class="img_wrap">
-            <img src="../static/pics/wechat.png" alt="" id="image1" class="img-responsive rounded image" style='width:75%;height:260px'/>
-            <form action="/browse" class="middle" method="POST">
+            <a href = "thankyou.html"> <img src="../static/pics/wechat.png" alt="" id="wechat" class="img-responsive rounded image" style='width:75%;height:260px'/></a>
+<!--             <form action="/browse" class="middle" method="POST">
               <input type="hidden" name="sequence" value="{{pic1.sequence}}"/>
             <div class="text">{{pic1.name}}</div>
             <div class="text">is hosting a</div>
@@ -80,35 +81,19 @@
             <div class="text"><span>at </span><span>{{pic1.time}}</span></div>
             <div style="padding:5px"></div>
 
-            </form>
+            </form> -->
       </div>
       </div>
 
       </div>
       </div>
 
-        <footer class="page-footer red lighten-3">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
+                <footer class="page-footer red lighten-3">
+
+          <div class="footer-copyright red lighten-3">
+            
             © 2018 Copyright Mr. J & Miss A
-            </div>
+           
           </div>
         </footer>
       
