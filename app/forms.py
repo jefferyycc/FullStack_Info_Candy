@@ -6,7 +6,7 @@ from flask.ext.wtf import Form
 from wtforms import StringField, IntegerField, PasswordField, SelectField
 from flask_wtf.html5 import EmailField
 from wtforms.validators import DataRequired
-from .models import retrieve_friends
+#from .models import retrieve_friends
 import sys
 
 class UserForm(Form):

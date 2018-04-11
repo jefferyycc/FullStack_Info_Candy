@@ -1,35 +1,51 @@
-{% extends "base.html" %}
-{% block title %}
-	Login
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="../../../../favicon.ico"> -->
+    <link rel="stylesheet" href="../static/css/materialize.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" type="text/css">
 
-{% block content %}
-<div>
-	<h1 id="headH1">Hi There! Welcome to Candy4U, the leading online candy making site.</h1>
-</div>
-<div class="main-container">
-	<h3>Let's get you logged in</h3>
-	<form action="/login" method="POST">
-		<br>
-		<p>
-			<label for="username">Username</label>
-			<input type="text" class="form-control" id="username" name="username" placeholder="Enter your username: ">
-		</p>
-		<br>
-		<p>
-			<label for="email">Password</label>
-			<input type="text" class="form-control" id="email" name="password" placeholder="Enter your password: ">
-		</p>
-		<br>
-		<p>
-			<input class="action-button" id="login" type="submit" value="Login">
-		</p>
-	</form>
-	<br>
-	<form action="/signup" method="POST">
-		<p>
-			<a class="action-button" id="login" href="{{ url_for('signup') }}"> Sing Up </a>
-		</p>
-	</form>
-</div>
-{% endblock %}
+    <!-- Custom styles for this template -->
+    <link href="../static/css/login.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="head">
+    </div>
+    <div class="container">
+
+      <!--<form class="form-signin" action="/login" method="post" style="margin-top:5%">-->
+      <form class="form-signin" action="/login" method="post" style="margin-top:5%">
+        <h2 class="form-signin-heading" style="text-align:center;padding-bottom:20px">Please log in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email Address" required>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+        <div class="checkbox" style="padding-top:15px">
+          <label>
+            <input type="checkbox" value="remember-me" name="remember"> Remember me
+          </label>
+        </div>
+        <!-- <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button> -->
+        <a href="/choose"   class='login'>
+          <button class="waves-effect waves-light btn grey lighten-1" type="button" >Log In</button>
+        </a>
+      </form>
+      <div style="text-align:center;color:red">{{message}}</div>
+    </div> <!-- /container -->
+    <div class="container" style="text-align:center;padding-top:50px;font-size:20px">
+      <div> New User?</div>
+      <div> Click here to
+        <a href="/signup">
+          <span>Register</span>
+        </a>
+        <span>!</span>
+      </div>
+    </div>
+    <script src="/static/js/login.js"></script>
+  </body>
+</html>

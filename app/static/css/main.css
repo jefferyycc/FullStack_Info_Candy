@@ -25,6 +25,7 @@ footer {
 footer p {
 	height: 7rem;
 	line-height: 7rem;
+	text-align: center;
 }
 
 h1, h3 {
@@ -198,4 +199,9 @@ input[type=range]::-webkit-slider-runnable-track {
 	background-color: #fff;
 	padding: 8px 12px;
 	line-height: 1.4;
+}
+
+.buttonHolder {
+	display: block;
+	text-align: center;
 }

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}
+	Login
+{% endblock %}
+
+{% block content %}
+<head>
+	<link href="../static/css/login.css" rel="stylesheet">
+</head>
+<div>
+	<h1 id="headH1"></h1>
+</div>
+<div class="main-container">
+	<h3>Let's get you logged in</h3>
+	<form action="/login" method="POST">
+		<br>
+		<p>
+			<label for="username">Username</label>
+			<input type="text" class="form-control" id="username" name="username" placeholder="Enter your username: ">
+		</p>
+		<br>
+		<p>
+			<label for="email">Password</label>
+			<input type="text" class="form-control" id="email" name="password" placeholder="Enter your password: ">
+		</p>
+		<br>
+		<p>
+			<input class="action-button" id="login" type="submit" value="Login">
+		</p>
+	</form>
+	<br>
+	<form action="/signup" method="POST">
+		<p>
+			<a class="action-button" id="login" href="{{ url_for('signup') }}"> Sing Up </a>
+		</p>
+	</form>
+</div>
+{% endblock %}
