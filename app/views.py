@@ -21,6 +21,7 @@ def index():
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
+    print('Jump to login.html!', file=sys.stderr)
     return render_template('login.html')
     """
     if request.method=='POST':
@@ -33,6 +34,7 @@ def login():
 
 @app.route('/signup', methods = ['GET', 'POST'])
 def signup():
+    print('Jump to signup.html!', file=sys.stderr)
     return render_template('signup.html')
     """
     if request.method=='POST':
@@ -73,6 +75,7 @@ def remove_order(value):
 
 @app.route('/choose')
 def choose():
+    print('Jump to choose.html!', file=sys.stderr)
     return render_template('choose.html')
 
 # 404 errohandler
