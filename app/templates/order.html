@@ -13,17 +13,20 @@
   </head>
   <body>
     <header>
+     <div class="navbar-fixed">
       <nav>
     <div class="nav-wrapper red lighten-3">
-      <a href="#" class="brand-logo">Mr. J & Miss A</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <span>Welcome</span><span> {{ user || safe}}</span>
-        <li><a href="choose.html">Home</a></li>
-        <li><a href="shoppingcart.html">Shopping Cart{{cart.number}}</a></li>
-        <li><a href="order.html">Order</a></li>
+      <a href="#" class="left brand-logo" style='padding-left: 15px'>Mr. J & Miss A</a>
+
+      <ul id="nav-mobile" class="right" style='padding-right: 15px'>
+        <span>Welcome </span><span>{{ user | safe}}</span>
+        <li><a href="/choose">Home</a></li>
+        <li><a href="/shoppingcart">Shopping Cart{{cart.number}}</a></li>
+        <li><a href="/order">Order</a></li>      
       </ul>
     </div>
   </nav>
+  </div>
       
     </header>
 
@@ -48,7 +51,7 @@
                     <td>{{ notification.quantity }}</td>
                     <td>{{ notification.price }}</td>
                     <td>{{ notification.total }}</td>
-                    <td><button id="{{ notification['name'] }}" class="waves-effect waves-light btn-small grey lighten-1">Remove Item</button></td>
+                    <!-- <td><button id="{{ notification['name'] }}" class="waves-effect waves-light btn-small grey lighten-1">Remove Item</button></td> -->
                   </tr>
                   {% endfor %}
         </tbody>

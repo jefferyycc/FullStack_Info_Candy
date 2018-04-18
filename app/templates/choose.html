@@ -16,13 +16,13 @@
      <div class="navbar-fixed">
       <nav>
     <div class="nav-wrapper red lighten-3">
-      <a href="#" class="left brand-logo">Mr. J & Miss A</a>
+      <a href="#" class="left brand-logo" style='padding-left: 15px'>Mr. J & Miss A</a>
 
-      <ul id="nav-mobile" class="right">
-        <span>Welcome</span><span> {{ user || safe}}</span>
-        <li><a href="choose.html">Home</a></li>
-        <li><a href="shoppingcart.html">Shopping Cart{{cart.number}}</a></li>
-        <li><a href="order.html">Order</a></li>      
+      <ul id="nav-mobile" class="right" style='padding-right: 15px'>
+        <span>Welcome </span><span>{{ user | safe}}</span>
+        <li><a href="/choose">Home</a></li>
+        <li><a href="/shoppingcart">Shopping Cart{{cart.number}}</a></li>
+        <li><a href="/order">Order</a></li>      
       </ul>
     </div>
   </nav>
@@ -32,9 +32,9 @@
 
   <div class="carousel carousel-slider center">
     <div class="carousel-fixed-item center">
-      <a class="waves-effect waves-light btn-large grey lighten-1" href="defaultbox.html" style='margin-right: 50px'>Default Collection</a>
+      <a class="waves-effect waves-light btn-large grey lighten-1" href="/defaultbox" style='margin-right: 50px'>Default Collection</a>
 
-      <a class="waves-effect waves-light btn-large grey lighten-1" href="diy.html" style='margin-left: 50px'>Create My Box</a>
+      <a class="waves-effect waves-light btn-large grey lighten-1" href="/diy" style='margin-left: 50px'>Create My Box</a>
     </div>
 
 
@@ -53,7 +53,7 @@
   </div> 
     
     
-        <footer class="page-footer red lighten-3">
+        <footer class="page-footer red lighten-3" style='padding-left: 15px'>
           <div class="footer-copyright red lighten-3">
             
             © 2018 Copyright Mr. J & Miss A

@@ -3,7 +3,7 @@ need to update
 """
 from flask import Flask, render_template, redirect, request, session, escape, url_for
 from app import app, models
-from .forms import UserForm, TripForm
+# from .forms import UserForm, TripForm
 # Access the models file to use SQL functions
 from .models import *
 
@@ -47,19 +47,23 @@ def logout():
     session.pop('password', None)
     return redirect(url_for('index'))
 
-@app.route('/create_user', methods=['GET', 'POST'])
-def create_user():
+@app.route('/choose')
+def choose():
+    return render_template('choose.html',user="test", cart="cart")
 
-@app.route('/order')
-def display_order():
+# @app.route('/create_user', methods=['GET', 'POST'])
+# def create_user():
 
-@app.route('/create-order', methods=['GET', 'POST'])
-def create_order():
+# @app.route('/order')
+# def display_order():
 
-@app.route('/remove-order/<value>')
-def remove_order(value):
+# @app.route('/create-order', methods=['GET', 'POST'])
+# def create_order():
 
-# 404 errohandler
-@app.errorhandler(404)
+# @app.route('/remove-order/<value>')
+# def remove_order(value):
+
+# # 404 errohandler
+# @app.errorhandler(404)
 def page_not_found(error):
 	return render_template('page_not_found.html'), 404
