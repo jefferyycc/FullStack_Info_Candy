@@ -3,7 +3,11 @@ need to update
 """
 from flask import Flask, render_template, redirect, request, session, escape, url_for
 from app import app, models
+<<<<<<< HEAD
 from .forms import UserForm
+=======
+# from .forms import UserForm, TripForm
+>>>>>>> 88397c8437f1ae24f7ab670b92c443d132dd2f45
 # Access the models file to use SQL functions
 from .models import *
 
@@ -78,7 +82,10 @@ def choose():
     print('Jump to choose.html!', file=sys.stderr)
     return render_template('choose.html')
 
-# 404 errohandler
-@app.errorhandler(404)
+# @app.route('/remove-order/<value>')
+# def remove_order(value):
+
+# # 404 errohandler
+# @app.errorhandler(404)
 def page_not_found(error):
 	return render_template('page_not_found.html'), 404

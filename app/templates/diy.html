@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <!-- Compiled and minified CSS -->
@@ -10,21 +11,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <script src="../static/js/materialize.js"></script>
     <script src="../static/js/interactions.js"></script>
+    <script src="../static/js/diy.js"></script>
+</head>
 
-  </head>
-  <body>
+<body>
+
     <header>
      <div class="navbar-fixed">
       <nav>
     <div class="nav-wrapper red lighten-3">
-      <a href="#" class="left brand-logo">Mr. J & Miss A</a>
+      <a href="#" class="left brand-logo" style='padding-left: 15px'>Mr. J & Miss A</a>
 
-      <ul id="nav-mobile" class="right">
-        <span>Welcome</span><span> {{ user || safe}}</span>
-        <li><a href="choose.html">Home</a></li>
-        <li><a href="shoppingcart.html">Shopping Cart{{cart.number}}</a></li>
-        <li><a href="order.html">Order</a></li>
-        <!-- <li><a href="account.html">Account</a></li>       -->
+      <ul id="nav-mobile" class="right" style='padding-right: 15px'>
+        <span>Welcome </span><span>{{ user | safe}}</span>
+        <li><a href="/choose">Home</a></li>
+        <li><a href="/shoppingcart">Shopping Cart{{cart.number}}</a></li>
+        <li><a href="/order">Order</a></li>
       </ul>
     </div>
   </nav>
@@ -32,16 +34,17 @@
 
     </header>
 
+<div class="parallax-container">
+  <div class="parallax"><img src="../static/pics/diy1.jpg"></div>
+</div>
 
-  <div class="parallax-container">
-    <div class="parallax"><img src="../static/pics/diy.jpg"></div>
-  </div>
-  <form action="/diy" method="POST">
-  <div class="container">
-  <div class="row" style="text-align:center">
+<div class="diy-form">
+ <form action="/diy" method="POST">
+<!--  <div class="section white">
+  <div class="row container" style="text-align:center">
       <i class="material-icons medium">looks_one</i><h1> Choose your candy box and size</h1>
-      <div class="input-field col s12 m6">
-    <select>
+    <div class="input-field col s12 m6">
+     <select>
       <option value="" disabled selected>Choose your option</option>
       <option value="one">1</option>
       <option value="two">2</option>
@@ -53,68 +56,118 @@
       <option value="eight">8</option>
       <option value="nine">9</option>
       <option value="ten">10</option>
-    </select>
-    <label>Number of Box</label>
-  </div>
-        <div class="input-field col s12 m6">
-    <select>
+     </select>
+     <label>Number of Box</label>
+    </div>
+
+    <div class="input-field col s12 m6">
+     <select>
       <option value="" disabled selected>Choose your option</option>
       <option value="large">Large</option>
       <option value="medium">Medium</option>
       <option value="small">Small</option>
-    </select>
-    <label>Box Size</label>
-  </div>
-  </div>
-  </div>
+     </select>
+     <label>Box Size</label>
+    </div>
 
-  <div class="parallax-container">
-    <div class="parallax"><img src="../static/pics/diy.jpg"></div>
-  </div>
-  <div class="container">
-    <div class="row" style="text-align:center">
-      <i class="material-icons medium">looks_two</i><h1> Select your candies</h1>
-        <div class="input-field col s12">
-    <select multiple class="icons">
-      <option value="" disabled selected>Choose your option</option>
-      <option value="milk" data-icon="../static/pics/candy-falvor/milk.jpg">Milk</option>
-      <option value="chocolate" data-icon="../static/pics/candy-falvor/chocolate.jpg">Chocolate</option>
-      <option value="almond" data-icon="../static/pics/candy-falvor/almond.jpg">Almond</option>
-      <option value="spicy" data-icon="../static/pics/candy-falvor/spicy.jpg">Spicy</option>
-      <option value="lukcy" data-icon="../static/pics/candy-falvor/lucky.jpg">Lucky Draw</option>
-    </select>
-    <label>Candy Flavor</label>
-  </div>
-  </div>
-  </div>
+ </div>
+</div> -->
+
+<div class="section white">
+  <div class="row container" style="text-align:center">
+      <i class="material-icons medium">looks_one</i><h1> Choose Box Size</h1>
+    <div class="input-field col s4">
+    <p>
+      <label>
+        <input name="group1" type="radio">
+        <span>Small(5 pcs)</span>
+      </label>
+    </p>
+    </div>
+
+    <div class="input-field col s4">
+    <p>
+      <label>
+        <input name="group1" type="radio">
+        <span>Medium(10 pcs)</span>
+      </label>
+    </p>
+    </div>
+
+    <div class="input-field col s4">
+    <p>
+      <label>
+        <input name="group1" type="radio">
+        <span>Large(15 pcs)</span>
+      </label>
+    </p>
+    </div>
+
+ </div>
+</div>
 
 
+<div class="parallax-container">
+  <div class="parallax"><img src="../static/pics/diy.jpg"></div>
+</div>
 
-  </div>
-  <div class="parallax-container">
-    <div class="parallax"><img src="../static/pics/diy2.jpg"></div>
-  </div>
+<div class="section white">
+  <div class="row container" style="text-align:center">
+    <i class="material-icons medium">looks_two</i><h1> Select Candy Flavor</h1>
 
-      <div class="container">
-    <div class="row" style="text-align:center">
-      <i class="material-icons medium">looks_3</i><h1> Select your candies</h1>
       <div class="input-field col s12">
-    <select>
-      <option value="" disabled selected>Choose your option</option>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </select>
-    <label>Materialize Select</label>
+        <select multiple class="icons">
+         <option value="" disabled selected>Choose your option</option>
+         <option value="milk" id="milk">Milk</option>
+         <option value="chocolate" id="chocolate">Chocolate</option>
+         <option value="almond" id='almond'>Almond</option>
+         <option value="caramel" id="caramel">Caramel</option>
+         <option value="hazelnut" id="hazelnut">Hazelnut</option>
+         <option value="toffee" id="toffee">Toffee</option>
+         <option value="sprinkle" id="sprinkle">Sprinkle</option>
+         <option value="mint" id="mint">Mint</option>
+         <option value="coffee" id="coffee">Coffee</option>
+         <option value="spicy" id="spicy">Spicy</option>
+        </select>
+      <label>Candy Flavor</label>
+     </div>
+
   </div>
+</div>
 
-  <button type="submit" class="waves-effect waves-light btn-large grey lighten-1" id="submit">Add to Cart</button>
+<div class="parallax-container">
+  <div class="parallax"><img src="../static/pics/diy2.jpg"></div>
+</div>
 
-  </div>
-  </div>
-  </form>
+<div class="section white">
+  <div class="row container" style="text-align:center">
+    <i class="material-icons medium">looks_3</i><h1> Adjust Candy Quautity</h1>
 
+      <div class="input-field col s12 m6 l3">
+        <p>Milk</p>
+        <select id="milk-pref">
+            <option value="" disabled selected>Quantity</option>
+            <option value="one">1</option>
+            <option value="two">2</option>
+            <option value="three">3</option>
+            <option value="four">4</option>
+            <option value="five">5</option>
+          </select>
+      </div>
 
+      <div class="input-field col s12 m6 l3">
+        <p>Chocolate</p>
+        <select id="milk-pref">
+            <option value="" disabled selected>Quantity</option>
+            <option value="one">1</option>
+            <option value="two">2</option>
+            <option value="three">3</option>
+            <option value="four">4</option>
+            <option value="five">5</option>
+          </select>
+      </div>
+
+<<<<<<< HEAD
 
 
         <footer class="page-footer red lighten-3">
@@ -125,3 +178,40 @@
 
   </body>
 </html>
+=======
+      <div class="input-field col s12 m6 l3">
+        <p>Almond</p>
+        <p class="range-field">
+        <input type="range" id="flavor1" min="0" max="10" value="5">
+         <p>Quantuty: <span id="flavor1-quan">5</span></p>
+        </p>
+      </div>
+
+      <div class="input-field col s12 m6 l3">
+        <p>Spicy</p>
+        <p class="range-field">
+        <input type="range" id="flavor1" min="0" max="10" value="5">
+         <p>Quantuty: <span id="flavor1-quan">5</span></p>
+        </p>
+      </div>
+
+      <div>
+      <p class="right">Total Quanity: <span id="total"></span></p>
+      </div>
+
+      <button type="submit" class="waves-effect waves-light btn-large grey lighten-1" id="submit">Add to Cart</button>
+
+  </div>
+</div>
+
+</form>
+</div>
+
+<footer class="page-footer red lighten-3">
+  <div class="footer-copyright red lighten-3">
+     © 2018 Copyright Mr. J & Miss A
+  </div>
+</footer>
+</body>
+</html>
+>>>>>>> 88397c8437f1ae24f7ab670b92c443d132dd2f45

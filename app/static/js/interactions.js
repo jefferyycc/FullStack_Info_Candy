@@ -6,6 +6,9 @@
 
   $(document).ready(function(){
 
+  	// alert("Hello! I am an alert box!!");
+  	// console.log(test);
+
   $('.carousel.carousel-slider').carousel({
     fullWidth: true,
     indicators: true

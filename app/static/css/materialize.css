@@ -6689,6 +6689,7 @@ textarea.materialize-textarea {
 
 /* Character Counter */
 .character-counter {
+  display: none;
   min-height: 18px;
 }
 
