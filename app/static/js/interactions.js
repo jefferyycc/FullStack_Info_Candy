@@ -32,7 +32,6 @@
     $('select').formSelect();
   });
 
-//=======
 $(document).ready(function(){
 	// $('select').formSelect();
 
