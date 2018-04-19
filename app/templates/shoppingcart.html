@@ -34,6 +34,7 @@
     <div class="row" style="text-align:center">
       <h1>Your shopping cart</h1>
       
+        <form action='/order' method="POST"> 
         <table class="striped">
         <thead>
           <tr>
@@ -49,15 +50,20 @@
                     <td>{{ notification.name }}</td>
                     <td>{{ notification.quantity }} </td>
                     <td>{{ notification.price }}</td>
-                    <td><button id="{{ notification['name'] }}" class="waves-effect waves-light btn-small grey lighten-1">Remove Item</button></td>
+                    <td><button id="{{ notification['name'] }}" class="waves-effect waves-light btn-small grey lighten-1" type="button">Remove Item</button></td>
                   </tr>
                   {% endfor %}
         </tbody>
       </table>
-            
-            <div class= "place_order" style="margin: 20px">
-            <a class="waves-effect waves-light btn-large grey lighten-1"><i class="material-icons right">shopping_cart</i>Place Order</a>
-            </div>
+            <input type="hidden" name="notifications" value="{{notifications}}">
+        <div class= "place_order" style="margin: 20px">
+            <button class="waves-effect waves-light btn-large grey lighten-1" type="submit" name="submit" id="submit" style="margin-right: 10px"><i class="material-icons right">shopping_cart</i>Place Order</button>
+
+      </form>
+          <a href="/choose" class="choose">
+            <button class="waves-effect waves-light btn-large grey lighten-1" type="button" style="margin-left: 10px"><i class="material-icons right">add_circle</i>Buy More</button>
+          </a>
+        </div>
 
             <h1>You May Also Like...</h1>
 
@@ -82,14 +88,11 @@
       </div>
       </div>
 
-        <footer class="page-footer red lighten-3">
-
-          <div class="footer-copyright red lighten-3">
-            
-            © 2018 Copyright Mr. J & Miss A
-           
-          </div>
-        </footer>
+<footer class="page-footer red lighten-3" style='padding-left: 15px'>
+      <div class="footer-copyright red lighten-3">
+       © 2018 Copyright Mr. J & Miss A        
+      </div>
+</footer>
       
   </body>
 </html>

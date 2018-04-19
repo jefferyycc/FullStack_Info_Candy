@@ -2,7 +2,6 @@
 <html>
   <head>
     <!-- Compiled and minified CSS -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"> -->
     <link rel="stylesheet" href="../static/css/materialize.css">
     <link rel="stylesheet" href="../static/css/main.css">
     <!-- Compiled and minified JavaScript -->
@@ -39,38 +38,6 @@
 
 <div class="diy-form">
  <form action="/diy" method="POST">
-<!--  <div class="section white">
-  <div class="row container" style="text-align:center">
-      <i class="material-icons medium">looks_one</i><h1> Choose your candy box and size</h1>
-    <div class="input-field col s12 m6">
-     <select>
-      <option value="" disabled selected>Choose your option</option>
-      <option value="one">1</option>
-      <option value="two">2</option>
-      <option value="three">3</option>
-      <option value="four">4</option>
-      <option value="five">5</option>
-      <option value="six">6</option>
-      <option value="seven">7</option>
-      <option value="eight">8</option>
-      <option value="nine">9</option>
-      <option value="ten">10</option>
-     </select>
-     <label>Number of Box</label>
-    </div>
-        
-    <div class="input-field col s12 m6">
-     <select>
-      <option value="" disabled selected>Choose your option</option>
-      <option value="large">Large</option>
-      <option value="medium">Medium</option>
-      <option value="small">Small</option>
-     </select>
-     <label>Box Size</label>
-    </div>
-   
- </div>
-</div> -->
 
 <div class="section white">
   <div class="row container" style="text-align:center">
@@ -78,8 +45,8 @@
     <div class="input-field col s4">
     <p>
       <label>
-        <input name="group1" type="radio">
-        <span>Small(5 pcs)</span>
+        <input name="size" type="radio" value="5">
+        <span>Small (5 pcs)</span>
       </label>
     </p>
     </div>
@@ -87,8 +54,8 @@
     <div class="input-field col s4">
     <p>
       <label>
-        <input name="group1" type="radio">
-        <span>Medium(10 pcs)</span>
+        <input name="size" type="radio" value="10">
+        <span>Medium (10 pcs)</span>
       </label>
     </p>
     </div>
@@ -96,8 +63,8 @@
     <div class="input-field col s4">
     <p>
       <label>
-        <input name="group1" type="radio">
-        <span>Large(15 pcs)</span>
+        <input name="size" type="radio" value="15">
+        <span>Large (15 pcs)</span>
       </label>
     </p>
     </div>
@@ -105,6 +72,56 @@
  </div>
 </div>
 
+<div class="parallax-container">
+  <div class="parallax"><img src="../static/pics/diy2.jpg"></div>
+</div>
+
+<div class="section white">
+  <div class="row container" style="text-align:center">
+    <i class="material-icons medium">looks_two</i><h1> Adjust Candy Quautity</h1>
+      
+      <div class="input-field col s12 m6 l3">
+        <p>Milk</p>
+        <img src="../static/pics/candy-flavor/milk.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:200px'/>
+        <p class="range-field">
+        <input type="range" id="flavor1" min="0" max="15" value="0" step="5">
+         <p>Quantuty: <span id="flavor1-quan"></span></p>
+        </p>
+      </div>
+
+      <div class="input-field col s12 m6 l3">
+        <p>Chocolate</p>
+        <img src="../static/pics/candy-flavor/chocolate.jpg" alt="" id="image2" class="img-responsive rounded image" style='width:100%;height:200px'/>
+        <p class="range-field">
+        <input type="range" id="flavor2" min="0" max="15" value="0" step="5">
+         <p>Quantuty: <span id="flavor2-quan"></span></p>
+        </p>
+      </div>
+
+      <div class="input-field col s12 m6 l3">
+        <p>Almond</p>
+        <img src="../static/pics/candy-flavor/almond.jpg" alt="" id="image3" class="img-responsive rounded image" style='width:100%;height:200px'/>
+        <p class="range-field">
+        <input type="range" id="flavor3" min="0" max="15" value="0" step="5">
+         <p>Quantuty: <span id="flavor3-quan"></span></p>
+        </p>
+      </div>
+
+      <div class="input-field col s12 m6 l3">
+        <p>Caramel</p>
+        <img src="../static/pics/candy-flavor/caramel.jpg" alt="" id="image4" class="img-responsive rounded image" style='width:100%;height:200px'/>
+        <p class="range-field">
+        <input type="range" id="flavor4" min="0" max="15" value="0" step="5">
+         <p>Quantuty: <span id="flavor4-quan"></span></p>
+        </p>
+      </div>
+
+      <div>
+      <p style="text-align:center">Total Quanity: <span id="total"></span></p>
+      </div>
+
+  </div>
+</div>
 
 <div class="parallax-container">
   <div class="parallax"><img src="../static/pics/diy.jpg"></div>
@@ -112,92 +129,38 @@
 
 <div class="section white">
   <div class="row container" style="text-align:center">
-    <i class="material-icons medium">looks_two</i><h1> Select Candy Flavor</h1>
+    <i class="material-icons medium">looks_3</i><h1> Select Box Quantity</h1>
       
       <div class="input-field col s12">
-        <select multiple class="icons">
+        <select id="box-num" name="box-num" required> 
          <option value="" disabled selected>Choose your option</option>
-         <option value="milk" id="milk">Milk</option>
-         <option value="chocolate" id="chocolate">Chocolate</option>
-         <option value="almond" id='almond'>Almond</option>
-         <option value="caramel" id="caramel">Caramel</option>
-         <option value="hazelnut" id="hazelnut">Hazelnut</option>
-         <option value="toffee" id="toffee">Toffee</option>
-         <option value="sprinkle" id="sprinkle">Sprinkle</option>
-         <option value="mint" id="mint">Mint</option>
-         <option value="coffee" id="coffee">Coffee</option>
-         <option value="spicy" id="spicy">Spicy</option>
+         <option value="one">1</option>
+         <option value="two">2</option>
+         <option value="three">3</option>
+         <option value="four">4</option>
+         <option value="five">5</option>
+         <option value="six">6</option>
+         <option value="seven">7</option>
+         <option value="eight">8</option>
+         <option value="nine">9</option>
+         <option value="ten">10</option>
         </select>
-      <label>Candy Flavor</label>
+      <label>Number of Box</label>
      </div>
+
+     <button type="submit" class="waves-effect waves-light btn-large grey lighten-1" id="submit">Add to Cart</button>
   
   </div>
 </div> 
 
-<div class="parallax-container">
-  <div class="parallax"><img src="../static/pics/diy2.jpg"></div>
-</div>
-
-<div class="section white">
-  <div class="row container" style="text-align:center">
-    <i class="material-icons medium">looks_3</i><h1> Adjust Candy Quautity</h1>
-      
-      <div class="input-field col s12 m6 l3">
-        <p>Milk</p>
-        <select id="milk-pref">
-            <option value="" disabled selected>Quantity</option>
-            <option value="one">1</option>
-            <option value="two">2</option>
-            <option value="three">3</option>
-            <option value="four">4</option>
-            <option value="five">5</option>
-          </select>
-      </div>
-
-      <div class="input-field col s12 m6 l3">
-        <p>Chocolate</p>
-        <select id="milk-pref">
-            <option value="" disabled selected>Quantity</option>
-            <option value="one">1</option>
-            <option value="two">2</option>
-            <option value="three">3</option>
-            <option value="four">4</option>
-            <option value="five">5</option>
-          </select>
-      </div>
-
-      <div class="input-field col s12 m6 l3">
-        <p>Almond</p>
-        <p class="range-field">
-        <input type="range" id="flavor1" min="0" max="10" value="5">
-         <p>Quantuty: <span id="flavor1-quan">5</span></p>
-        </p>
-      </div>
-
-      <div class="input-field col s12 m6 l3">
-        <p>Spicy</p>
-        <p class="range-field">
-        <input type="range" id="flavor1" min="0" max="10" value="5">
-         <p>Quantuty: <span id="flavor1-quan">5</span></p>
-        </p>
-      </div>
-
-      <div>
-      <p class="right">Total Quanity: <span id="total"></span></p>
-      </div>
-      
-      <button type="submit" class="waves-effect waves-light btn-large grey lighten-1" id="submit">Add to Cart</button>
-
-  </div>
-</div>
-
 </form>
 </div>
     
-<footer class="page-footer red lighten-3">
+<footer class="page-footer red lighten-3" style='padding-left: 15px'>
   <div class="footer-copyright red lighten-3">
-     © 2018 Copyright Mr. J & Miss A
+   © 2018 Copyright Mr. J & Miss A
   </div>
 </footer>
+
 </body>
 </html>

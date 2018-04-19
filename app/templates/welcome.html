@@ -1,18 +1,37 @@
-{% extends "base.html" %}
+<html>
+  <head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="../static/css/materialize.css">
+    <link rel="stylesheet" href="../static/css/welcome.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/materialize.js"></script>
+    <script src="../static/js/interactions.js"></script>
 
-{% block header %}
-	{{super()}}
-	<form action="logout" id="logout">
-		<span id="username">Logged in as {{ name }}</span>
-		<input class="action-button" id="logout-button" type="submit" value="Logout">
-	</form>
-{% endblock %}
+  </head>
+  <body>
+    <header>
+    </header>
 
-{% block content %}
-  <div class="container">
-    <div class="row">
-      <h1>Welcome to the Candy4U</h1>
-			<p>Please choose our special "selection" or make your own flavor!</p>
+    <div class = "title">
+      <strong>Mr. J & Ms. A</strong>
+      <p style="font-size:25px">Taste Some Sweet</p>
     </div>
-  </div>
-{% endblock %}
+    
+    <div>
+        <a href="/login"   class='login'>
+          <button class="waves-effect waves-light btn grey lighten-1" style="width:100px;height:35px" type="button" >Log In</button>
+        </a>
+              
+        <a href="/register" class="login">
+          <button class="waves-effect waves-light btn grey lighten-1" style="width:100px;height:35px;margin-top:20px" type="button" >Register</button>
+        </a>
+    </div>
+    
+    
+  <footer>
+         
+  </footer>
+      
+  </body>
+</html>

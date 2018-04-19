@@ -1,35 +1,56 @@
-{% extends "base.html" %}
-{% block title %}
-	Login
-{% endblock %}
+<html>
+  <head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="../static/css/materialize.css">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/materialize.js"></script>
+    <script src="../static/js/login.js"></script>
 
-{% block content %}
-<div>
-	<h1 id="headH1">Hi There! Welcome to Candy4U, the leading online candy making site.</h1>
+  </head>
+  <body>
+    <header>
+    </header>
+
+<div class="container" class="col s12">
+  <div class="row">
+    <form action="/register" action="POST" id="reg-form">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate" required>
+          <label for="email">Email</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate" minlength="6" required>
+          <label for="password">Password</label>
+        </div>
+        <div class="input-field col s4 right">
+          <button class="btn btn-large btn-register waves-effect waves-light grey lighten-1" type="submit" name="action">Log In
+            <i class="material-icons right">done</i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <div style="text-align:center;color:red">{{message}}</div>
+    </div> <!-- /container -->
+       <div style="text-align:center">
+      <div> New User?</div>
+      <div> Click here to 
+        <a href="/register">
+          <span>Register</span>
+        </a>
+        <span>!</span>
+        </div>
+      </div> 
+  </div> 
 </div>
-<div class="main-container">
-	<h3>Let's get you logged in</h3>
-	<form action="/login" method="POST">
-		<br>
-		<p>
-			<label for="username">Username</label>
-			<input type="text" class="form-control" id="username" name="username" placeholder="Enter your username: ">
-		</p>
-		<br>
-		<p>
-			<label for="email">Password</label>
-			<input type="text" class="form-control" id="email" name="password" placeholder="Enter your password: ">
-		</p>
-		<br>
-		<p>
-			<input class="action-button" id="login" type="submit" value="Login">
-		</p>
-	</form>
-	<br>
-	<form action="/signup" method="POST">
-		<p>
-			<a class="action-button" id="login" href="{{ url_for('signup') }}"> Sing Up </a>
-		</p>
-	</form>
-</div>
-{% endblock %}
+    
+    
+  <footer>
+         
+  </footer>
+      
+  </body>
+</html>

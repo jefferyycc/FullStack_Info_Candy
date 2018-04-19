@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="../static/css/materialize.css">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/materialize.js"></script>
+    <script src="../static/js/login.js"></script>
+
+  </head>
+  <body>
+    <header>
+    </header>
+
+<div class="container" class="col s12">
+  <div class="row">
+    <form action="/register" action="POST" id="reg-form">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="first_name" type="text" class="validate" required>
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate" required>
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+        <div class="input-field col s6">
+          <input id="email" type="email" class="validate" required>
+          <label for="email">Email</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="password" type="password" class="validate" minlength="6" required>
+          <label for="password">Password</label>
+        </div>
+      <div class="input-field col s6">
+          <input id="street" type="text" class="validate" required>
+          <label for="street">Street</label>
+        </div>
+      <div class="input-field col s6">
+          <input id="city" type="text" class="validate" required>
+          <label for="city">City</label>
+        </div>
+      <div class="input-field col s6">
+          <input id="state" type="text" class="validate" required>
+          <label for="state">State</label>
+      </div>
+      <div class="input-field col s6">
+          <input id="phone" type="text" class="validate" required>
+          <label for="phone">Phone</label>
+      </div>
+
+        <div class="input-field col s4 right">
+          <button class="btn btn-large btn-register waves-effect waves-light grey lighten-1" type="submit" name="action">Register
+            <i class="material-icons right">done</i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- <a title="Login" class="ngl btn-floating btn-large waves-effect waves-light red"><i class="material-icons">input</i></a> -->
+</div>
+    
+    
+  <footer>
+         
+  </footer>
+      
+  </body>
+</html>

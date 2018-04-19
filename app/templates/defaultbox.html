@@ -26,9 +26,6 @@
     </div>
   </nav>
   </div>
-      
-    </header>
-      
     </header>
 
     <div class="container">
@@ -38,15 +35,15 @@
 
     <div class="col s4">
     <div class="img_wrap">
-            <img src="/static/pics/japanese/3.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
-            <form action="/shoppingcart" class="middle" method="POST">
-              <input type="hidden" name="sequence" value="{{pic1.sequence}}"/>
+            <img src="/static/pics/default/{{default.id1}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+            
+            <form action="/default" class="middle" method="POST">
             <div class="text">{{box1.name}}</div>
             <div class="text">{{box1.price}}</div>
             <div style="padding:5px"></div>
             
            <div class="input-field col s12">
-           <select id="pref1">
+           <select id="pref1" name="pref1">
             <option value="" disabled selected>Quantity</option>
             <option value="one">1</option>
             <option value="two">2</option>
@@ -59,14 +56,13 @@
       </div>
           <div class="col s4">
     <div class="img_wrap">
-            <img src="/static/pics/japanese/3.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
-              <input type="hidden" name="sequence" value="{{pic1.sequence}}"/>
+            <img src="/static/pics/default/{{default.id2}}.jpg" alt="" id="image2" class="img-responsive rounded image" style='width:100%;height:260px'/>
             <div class="text">{{box2.name}}</div>
             <div class="text">{{box2.price}}</div>
             <div style="padding:5px"></div>
             
            <div class="input-field col s12">
-           <select id="pref2">
+           <select id="pref2" name="pref2">
             <option value="" disabled selected>Quantity</option>
             <option value="one">1</option>
             <option value="two">2</option>
@@ -87,7 +83,7 @@
             <div style="padding:5px"></div>
             
            <div class="input-field col s12">
-           <select id="pref3">
+           <select id="pref3" name="pref3">
             <option value="" disabled selected>Quantity</option>
             <option value="one">1</option>
             <option value="two">2</option>
@@ -109,7 +105,7 @@
             <div style="padding:5px"></div>
             
            <div class="input-field col s12">
-           <select id="pref4">
+           <select id="pref4" name="pref4">
             <option value="" disabled selected>Quantity</option>
             <option value="one">1</option>
             <option value="two">2</option>
@@ -131,7 +127,7 @@
             <div style="padding:5px"></div>
             
            <div class="input-field col s12">
-           <select id="pref5">
+           <select id="pref5" name="pref5">
             <option value="" disabled selected>Quantity</option>
             <option value="one">1</option>
             <option value="two">2</option>
@@ -153,7 +149,7 @@
             <div style="padding:5px"></div>
             
            <div class="input-field col s12">
-           <select id="pref6">
+           <select id="pref6" name="pref6">
             <option value="" disabled selected>Quantity</option>
             <option value="one">1</option>
             <option value="two">2</option>
@@ -165,7 +161,7 @@
           
       </div>
       </div>
-      <button class="waves-effect waves-light btn-large grey lighten-1" type="submit" name="action">Add to Cart
+      <button class="waves-effect waves-light btn-large grey lighten-1" type="submit" name="submit">Add to Cart
       </button>
       </form>
 

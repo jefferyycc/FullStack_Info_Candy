@@ -41,6 +41,7 @@
               <th>Item Quantity</th>
               <th>Item Price</th>
               <th>Item Total</th>
+              <th></th>
           </tr>
         </thead>
 
@@ -51,7 +52,7 @@
                     <td>{{ notification.quantity }}</td>
                     <td>{{ notification.price }}</td>
                     <td>{{ notification.total }}</td>
-                    <!-- <td><button id="{{ notification['name'] }}" class="waves-effect waves-light btn-small grey lighten-1">Remove Item</button></td> -->
+                    <td><button id="{{ notification['name'] }}" class="waves-effect waves-light btn-small grey lighten-1">Cancel Order</button></td>
                   </tr>
                   {% endfor %}
         </tbody>
@@ -61,44 +62,23 @@
       <div class="col s6">
     <div class="img_wrap">
             
-            <a href = "thankyou.html"> <img src="../static/pics/venmo.png" alt="" id="venmo" class="img-responsive rounded image" style='width:75%;height:260px'/></a>
-            <!-- <form action="/browse" class="middle" method="POST">
-              <input type="hidden" name="sequence" value="{{pic1.sequence}}"/>
-            <div class="text">{{pic1.name}}</div>
-            <div class="text">is hosting a</div>
-            <div class="text"><span>{{pic1.price}}&nbsp</span><span id="food1">{{pic1.food}}</span><span> meal</span></div>
-            <div class="text"><span>at </span><span>{{pic1.time}}</span></div>
-            <div style="padding:5px"></div> -->
-            
-            </form>
+            <a href = "/thankyou"> <img src="../static/pics/venmo.png" alt="" id="venmo" class="img-responsive rounded image" style='width:75%;height:260px'/></a>
       </div>
       </div>
           <div class="col s6">
     <div class="img_wrap">
-            <a href = "thankyou.html"> <img src="../static/pics/wechat.png" alt="" id="wechat" class="img-responsive rounded image" style='width:75%;height:260px'/></a>
-<!--             <form action="/browse" class="middle" method="POST">
-              <input type="hidden" name="sequence" value="{{pic1.sequence}}"/>
-            <div class="text">{{pic1.name}}</div>
-            <div class="text">is hosting a</div>
-            <div class="text"><span>{{pic1.price}}&nbsp</span><span id="food1">{{pic1.food}}</span><span> meal</span></div>
-            <div class="text"><span>at </span><span>{{pic1.time}}</span></div>
-            <div style="padding:5px"></div>
-
-            </form> -->
+            <a href = "/thankyou"> <img src="../static/pics/wechat.png" alt="" id="wechat" class="img-responsive rounded image" style='width:75%;height:260px'/></a>
       </div>
       </div>
 
       </div>
       </div>
 
-                <footer class="page-footer red lighten-3">
-
-          <div class="footer-copyright red lighten-3">
-            
-            © 2018 Copyright Mr. J & Miss A
-           
-          </div>
-        </footer>
+ <footer class="page-footer red lighten-3" style='padding-left: 15px'>
+      <div class="footer-copyright red lighten-3">
+       © 2018 Copyright Mr. J & Miss A        
+      </div>
+ </footer>
       
   </body>
 </html>
