@@ -1,3 +1,10 @@
+"""
+Insert box informaiton into the database.
+Each box id has 8 digits, e.g. "05001000",
+the 1st and 2nd digits represent the amount of No.1 candy -- 05,
+the 3rd and 4th digits represent the amount of No.2 candy -- 00,
+and so on.
+"""
 from itertools import product
 import pandas as pd
 import sqlite3 as sql
