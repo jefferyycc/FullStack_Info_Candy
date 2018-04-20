@@ -7,6 +7,48 @@ from app import app, models
 # Access the models file to use SQL functions
 from .models import *
 
+# test
+@app.route('/test/check_user')
+def test_check_user():
+    """
+    Check whether the email is already in the database.
+    """
+    email = 'jiaxun.song@outlook.com'
+    check = check_user(email)
+    if check:
+        return "<div>The email already existed in the database!<div/>"
+    else:
+        return "<div>You can use this email to register!<div/>"
+
+@app.route('/test/register')
+def test_register():
+    """
+    Insert user into database.
+    """
+    email = "jiaxun.song@berkeley.edu"
+    password = "88888888"
+    first_name = "Mike"
+    last_name = "Song"
+    street = "California Street 1234"
+    city = "Berkeley"
+    state = "CA"
+    zip_code = "12345"
+    phone = "5101234567"
+    insert_user(email, password, first_name, last_name, street, city, state, zip_code, phone)
+    return "<div>Registered successfully!<div/>"
+
+@app.route('/test/login_check')
+def test_login_check():
+    """
+    Ask database whether the email and password match.
+    """
+    email = "jiaxun.song@berkeley.edu"
+    password = "88888888"
+    if login_check(email, password):
+        return "<div>Login successfully!<div/>"
+    else:
+        return "<div>Wrong email and password pair!<div/>"
+
 # index page
 @app.route('/')
 @app.route('/index')
