@@ -7,10 +7,10 @@ DROP TABLE IF EXISTS `Customer`;
 DROP TABLE IF EXISTS `Order`;
 
 CREATE TABLE `Item` (
-  `box_id`   INTEGER NOT NULL,
-  `order_id` INTEGER NOT NULL,
+  `box_id`   TEXT NOT NULL,
+  `order_id` TEXT NOT NULL,
   `quantity` INTEGER NOT NULL,
-  PRIMARY KEY (`box_id`)
+  PRIMARY KEY (`box_id`, `order_id`)
 );
 
 CREATE TABLE `Candy` (
@@ -24,10 +24,10 @@ CREATE TABLE `Candy` (
 INSERT INTO `Candy`
 	(`candy_name`, `calories`, `ingredients`, `price`)
 VALUES
-	( 'C1', 100, 'Milk',            2.5),
-	( 'C2', 150, 'White chocolate', 2.0),
-	( 'C3', 120, 'Almond',          2.8),
-	( 'C4', 160, 'Sugar',           1.5);
+	( 'C1', 100, 'Milk',      2.5),
+	( 'C2', 150, 'Chocolate', 2.0),
+	( 'C3', 120, 'Almond',    2.8),
+	( 'C4', 160, 'Sugar',     1.5);
 
 CREATE TABLE `Customer` (
   `email`      TEXT NOT NULL,
@@ -48,7 +48,7 @@ VALUES
 	( 'alice@outlook.com', 'Alice', 'Yang', '605 Ohlone Ave Apt 629', 'Berkeley', 'CA', '94706', '5105410128');
 
 CREATE TABLE `Payment` (
-  `payment_id` INTEGER NOT NULL,
+  `payment_id` TEXT NOT NULL,
   `method`     TEXT    NOT NULL,
   `url`        TEXT    NOT NULL,
   PRIMARY KEY (`payment_id`)
@@ -61,17 +61,17 @@ VALUES
 	( 2, 'WeChat', 'wechat.com');
 
 CREATE TABLE `Order` (
-  `order_id`    INTEGER NOT NULL,
+  `order_id`    TEXT NOT NULL,
   `email`       TEXT    NOT NULL,
   `create_date` TEXT    NOT NULL,
   `total_price` REAL    NOT NULL,
   `paid`        INTEGER NOT NULL,
-  `payment_id`  INTEGER NOT NULL,
+  `payment_id`  TEXT NOT NULL,
   PRIMARY KEY (`order_id`)
 );
 
 CREATE TABLE `Box` (
-  `box_id`       INTEGER NOT NULL,
+  `box_id`       TEXT NOT NULL,
   `candy_name`   TEXT    NOT NULL,
   `candy_amount` INTEGER NOT NULL,
   PRIMARY KEY (`box_id`, `candy_name`)
