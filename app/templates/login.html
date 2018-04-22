@@ -16,14 +16,14 @@
 
 <div class="container" class="col s12">
   <div class="row">
-    <form action="/register" action="POST" id="reg-form">
+    <form action="/login" method="post" id="reg-form">
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate" required>
+          <input id="email" type="email" class="validate" name="email" required>
           <label for="email">Email</label>
         </div>
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate" minlength="6" required>
+          <input id="password" type="password" class="validate" name="password" minlength="6" required>
           <label for="password">Password</label>
         </div>
         <div class="input-field col s4 right">

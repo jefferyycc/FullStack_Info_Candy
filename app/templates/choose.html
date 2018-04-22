@@ -22,8 +22,9 @@
       <ul id="nav-mobile" class="right" style='padding-right: 15px'>
         <span>Welcome </span><span>{{ user | safe}}</span>
         <li><a href="/choose">Home</a></li>
-        <li><a href="/shoppingcart">Shopping Cart{{cart.number}}</a></li>
+        <li><a href="/shoppingcart">Shopping Cart</a></li>
         <li><a href="/order">Order</a></li>      
+        <li><a href="/logout">Log Out</a></li>
       </ul>
     
     </div>
@@ -33,7 +34,7 @@
 
 <div class="carousel carousel-slider center">
   <div class="carousel-fixed-item center">
-      <a class="waves-effect waves-light btn-large grey lighten-1" href="/defaultbox" style='margin-right: 50px'>Default Collection</a>
+      <a class="waves-effect waves-light btn-large grey lighten-1" href="/default" style='margin-right: 50px'>Default Collection</a>
 
       <a class="waves-effect waves-light btn-large grey lighten-1" href="/diy" style='margin-left: 50px'>Create My Box</a>
   </div>

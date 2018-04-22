@@ -3,7 +3,11 @@ Web Server
 """
 from flask import Flask, render_template, redirect, request, session, escape, url_for
 from app import app, models
-# from .forms import UserForm, TripForm
+import requests
+import os
+import json
+from datetime import datetime
+import uuid
 # Access the models file to use SQL functions
 from .models import *
 
@@ -150,61 +154,119 @@ def test_pay_via_emaild():
 
 # index page
 @app.route('/')
-@app.route('/index')
-def index():
-    if 'username' in session:
-        username = escape(session['username'])
-        return redirect('/trips')
-    else:
-        return render_template('login.html')
+def main():
+    return render_template('welcome.html')
 
-@app.route('/login', methods = ['GET', 'POST'])
+@app.route('/login',methods=['GET'])
+def show_login():
+    return render_template('login.html')
+
+@app.route('/register',methods=['GET'])
+def show_register():
+    return render_template('register.html')
+
+@app.route('/register',methods=['POST'])
+def register():
+    first_name = request.form.get("first_name")
+    last_name = request.form.get("last_name")
+    email = request.form.get("email")
+    password = request.form.get("password")
+    street = request.form.get("street")
+    city = request.form.get("city")
+    state = request.form.get("state")
+    zip_code = request.form.get("zip_code")
+    phone = request.form.get("phone")
+    if check_user(email):
+        return render_template("register.html", message="The email already existed in the database!")
+    else: 
+        insert_user(email, password, first_name, last_name, street, city, state, zip_code, phone)
+        return redirect(url_for('show_login'))
+
+
+@app.route('/login',methods=['POST'])
 def login():
-    if request.method=='POST':
-        session['username'] = request.form['username']
-        session['password'] = request.form['password']
-        return redirect(url_for('index'))
-    if request.method=='GET':
-        return redirect(url_for('signup'))
-
-@app.route('/signup', methods = ['GET', 'POST'])
-def signup():
-    if request.method=='POST':
-        username = request.form['username']
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
-        password = request.form['password']
-        insert_user(username, password, first_name, last_name)
-        session['username'] = username
-        session['first_name'] = first_name
-        session['last_name'] = last_name
-        session['password'] = password
-        return redirect(url_for('index'))
-    return render_template('signup.html')
+    email = request.form.get("email")
+    password = request.form.get("password")
+    if login_check(email, password):
+        session['email'] = email
+        return redirect(url_for('choose'))
+    else: 
+        return render_template("login.html", message="Your password is not correct.")
 
 @app.route('/logout')
 def logout():
     session.pop('username', None)
-    session.pop('password', None)
-    return redirect(url_for('index'))
+    return render_template("login.html", message="You've logged out.")
 
-@app.route('/choose')
+@app.route('/choose',methods=['GET'])
 def choose():
-    return render_template('choose.html',user="test", cart="cart")
+    email = session['email']
+    info = get_user(email)
+    return render_template('choose.html',user=info[0][1])
 
-# @app.route('/create_user', methods=['GET', 'POST'])
-# def create_user():
+@app.route('/default',methods=['GET'])
+def show_default():
+    box_id_list = ["10000000", "00100000", "00001000", "00000010", "05050500", "05000505"]
+    box_info = {box_id:get_single_box(box_id) for box_id in box_id_list}
+    email = session['email']
+    info = get_user(email)
+    return render_template('defaultbox.html',box1=box_info["10000000"],box2=box_info["00100000"],box3=box_info["00001000"],
+        box4=box_info["00000010"],box5=box_info["05050500"],box6=box_info["05000505"],user=info[0][1])
 
-# @app.route('/order')
-# def display_order():
+# need to revise
+@app.route('/default',methods=['POST'])
+def default():
+    pref1 = request.form.get("pref1")
+    pref2 = request.form.get("pref2")
+    pref3 = request.form.get("pref3")
+    pref4 = request.form.get("pref4")
+    pref5 = request.form.get("pref5")
+    pref6 = request.form.get("pref6")
+    # box_id_list = ["10000000", "00100000", "00001000", "00000010", "05050500", "05000505"]
+    # pref_list = [pref1, pref2, pref3, pref4, pref5, pref6]
+    cart_info = {}
+    cart_info['boxes'] = {"10000000": pref1, "00100000": pref2, "00001000": pref3, 
+    "00000010": pref4, "05050500": pref5, "05000505": pref6}
+    cart_info['create_date'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    cart_info['price'] = 0
+    cart_info['order_id'] = str(uuid.uuid3(uuid.NAMESPACE_DNS, session["email"] + cart_info["create_date"]))
 
-# @app.route('/create-order', methods=['GET', 'POST'])
-# def create_order():
+    session['cart_info'] = cart_info
 
-# @app.route('/remove-order/<value>')
-# def remove_order(value):
+    email = session['email']
+    info = get_user(email)
 
-# # 404 errohandler
-# @app.errorhandler(404)
-def page_not_found(error):
-	return render_template('page_not_found.html'), 404
+    return render_template('shoppingcart.html',notification= cart_info['boxes'],user=info[0][1])
+
+@app.route('/diy',methods=['GET'])
+def show_diy():
+    email = session['email']
+    info = get_user(email)
+    return render_template('diy.html',user=info[0][1])
+
+# need to revise
+@app.route('/order',methods=["POST"])
+def order():
+    order_info = {"email" : session['email'], 
+                  "boxes" : session['cart_info']['boxes']
+                  }
+    order_info["create_date"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    order_info["order_id"] = str(uuid.uuid3(uuid.NAMESPACE_DNS, order_info["email"] + order_info["create_date"]))
+    # this total_price calculating method can be used for front-end.
+    order_info["total_price"] = sum([get_single_box(box[0])["price"] * box[1] for box in order_info["boxes"].items()])
+    place_order(order_info)
+
+    email = session['email']
+    info = get_user(email)
+
+    return render_template('order.html',notification=order_info,user=info[0][1])
+
+
+
+
+
+
+
+
+
+

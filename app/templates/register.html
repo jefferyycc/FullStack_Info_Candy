@@ -16,39 +16,44 @@
 
 <div class="container" class="col s12">
   <div class="row">
-    <form action="/register" action="POST" id="reg-form">
+    <form action="/register" method="POST" id="reg-form">
       <div class="row">
         <div class="input-field col s6">
-          <input id="first_name" type="text" class="validate" required>
+          <input id="first_name" type="text" class="validate" name="first_name" required>
           <label for="first_name">First Name</label>
         </div>
         <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate" required>
+          <input id="last_name" type="text" class="validate" name="last_name" required>
           <label for="last_name">Last Name</label>
         </div>
       </div>
         <div class="input-field col s6">
-          <input id="email" type="email" class="validate" required>
+          <input id="email" type="email" class="validate" name="email" required>
           <label for="email">Email</label>
+          <div style="text-align:center;color:red">{{message}}</div>
         </div>
         <div class="input-field col s6">
-          <input id="password" type="password" class="validate" minlength="6" required>
+          <input id="password" type="password" class="validate" name="password" minlength="6" required>
           <label for="password">Password</label>
         </div>
-      <div class="input-field col s6">
-          <input id="street" type="text" class="validate" required>
+      <div class="input-field col s12">
+          <input id="street" type="text" class="validate" name="street" required>
           <label for="street">Street</label>
         </div>
       <div class="input-field col s6">
-          <input id="city" type="text" class="validate" required>
+          <input id="city" type="text" class="validate" name="city" required>
           <label for="city">City</label>
         </div>
       <div class="input-field col s6">
-          <input id="state" type="text" class="validate" required>
+          <input id="state" type="text" class="validate" name="state" required>
           <label for="state">State</label>
       </div>
       <div class="input-field col s6">
-          <input id="phone" type="text" class="validate" required>
+          <input id="zip_code" type="text" class="validate" name="zip_code" required>
+          <label for="zip_code">Zip Code</label>
+      </div>
+      <div class="input-field col s6">
+          <input id="phone" type="text" class="validate" name="phone" required>
           <label for="phone">Phone</label>
       </div>
 
