@@ -47,6 +47,20 @@ def login_check(email, password):
 	conn.close()
 	return True if info else False
 
+# add method  
+def get_user(email):
+	"""
+	Get user information using email
+	input: user's email
+	output: user object
+	"""
+	conn = get_connection()
+	cur = conn.cursor()
+	cur.execute("SELECT * FROM Customer WHERE email=(?)",[email])
+	info = cur.fetchall()
+	conn.close()
+	return info
+
 def get_single_box(box_id):
     """
     Given box_id, return a dictionary of box information.
@@ -61,6 +75,12 @@ def get_single_box(box_id):
     candy_info = cur.fetchall()
     conn.close()
     box_info = {c[0]:c[1] for c in candy_info}
+    # add one more variable 
+    box_info['total'] = candy_info[0][1] + candy_info[1][1] + candy_info[2][1] + candy_info[3][1]
+    box_info['milk'] = candy_info[0][1]
+    box_info['chocolate'] = candy_info[1][1]
+    box_info['almond'] = candy_info[2][1]
+    box_info['sugar'] = candy_info[3][1]
     box_info['price'] = price_cal[0][0]
     box_info['calories'] = price_cal[0][1]
     box_info['box_id'] = box_id

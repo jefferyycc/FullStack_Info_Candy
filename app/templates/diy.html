@@ -24,8 +24,9 @@
       <ul id="nav-mobile" class="right" style='padding-right: 15px'>
         <span>Welcome </span><span>{{ user | safe}}</span>
         <li><a href="/choose">Home</a></li>
-        <li><a href="/shoppingcart">Shopping Cart{{cart.number}}</a></li>
+        <li><a href="/shoppingcart">Shopping Cart</a></li>
         <li><a href="/order">Order</a></li>      
+        <li><a href="/logout">Log Out</a></li>    
       </ul>
     </div>
   </nav>
@@ -84,7 +85,7 @@
         <p>Milk</p>
         <img src="../static/pics/candy-flavor/milk.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:200px'/>
         <p class="range-field">
-        <input type="range" id="flavor1" min="0" max="15" value="0" step="5">
+        <input type="range" id="flavor1" name="flavor1" min="0" max="15" value="0" step="5">
          <p>Quantuty: <span id="flavor1-quan"></span></p>
         </p>
       </div>
@@ -93,7 +94,7 @@
         <p>Chocolate</p>
         <img src="../static/pics/candy-flavor/chocolate.jpg" alt="" id="image2" class="img-responsive rounded image" style='width:100%;height:200px'/>
         <p class="range-field">
-        <input type="range" id="flavor2" min="0" max="15" value="0" step="5">
+        <input type="range" id="flavor2" name="flavor2" min="0" max="15" value="0" step="5">
          <p>Quantuty: <span id="flavor2-quan"></span></p>
         </p>
       </div>
@@ -102,16 +103,16 @@
         <p>Almond</p>
         <img src="../static/pics/candy-flavor/almond.jpg" alt="" id="image3" class="img-responsive rounded image" style='width:100%;height:200px'/>
         <p class="range-field">
-        <input type="range" id="flavor3" min="0" max="15" value="0" step="5">
+        <input type="range" id="flavor3" name="flavor3" min="0" max="15" value="0" step="5">
          <p>Quantuty: <span id="flavor3-quan"></span></p>
         </p>
       </div>
 
       <div class="input-field col s12 m6 l3">
-        <p>Caramel</p>
+        <p>Sugar</p>
         <img src="../static/pics/candy-flavor/caramel.jpg" alt="" id="image4" class="img-responsive rounded image" style='width:100%;height:200px'/>
         <p class="range-field">
-        <input type="range" id="flavor4" min="0" max="15" value="0" step="5">
+        <input type="range" id="flavor4" name="flavor4" min="0" max="15" value="0" step="5">
          <p>Quantuty: <span id="flavor4-quan"></span></p>
         </p>
       </div>

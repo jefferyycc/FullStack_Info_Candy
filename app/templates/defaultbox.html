@@ -20,8 +20,9 @@
       <ul id="nav-mobile" class="right" style='padding-right: 15px'>
         <span>Welcome </span><span>{{ user | safe}}</span>
         <li><a href="/choose">Home</a></li>
-        <li><a href="/shoppingcart">Shopping Cart{{cart.number}}</a></li>
+        <li><a href="/shoppingcart">Shopping Cart</a></li>
         <li><a href="/order">Order</a></li>      
+        <li><a href="/logout">Log Out</a></li>      
       </ul>
     </div>
   </nav>
@@ -35,16 +36,23 @@
 
     <div class="col s4">
     <div class="img_wrap">
-            <img src="/static/pics/default/{{default.id1}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+            <img src="/static/pics/default/{{box1.box_id}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
             
             <form action="/default" class="middle" method="POST">
-            <div class="text">{{box1.name}}</div>
-            <div class="text">{{box1.price}}</div>
+            <div class="text"><span>Total: </span>{{box1.total}}<span> pcs</span>
+            <br>
+            <span>(Milk: </span>{{box1.milk}}<span> pcs</span>
+            Chocolate: </span>{{box1.chocolate}}<span> pcs</span>
+            Almond: </span>{{box1.almond}}<span> pcs</span>
+            Sugar: </span>{{box1.sugar}}<span> pcs)</span>
+            </div>
+            <div class="text"><span>Price: $</span>{{box1.price}}</div>
             <div style="padding:5px"></div>
             
            <div class="input-field col s12">
            <select id="pref1" name="pref1">
             <option value="" disabled selected>Quantity</option>
+            <option value="zero">0</option>
             <option value="one">1</option>
             <option value="two">2</option>
             <option value="three">3</option>
@@ -56,14 +64,21 @@
       </div>
           <div class="col s4">
     <div class="img_wrap">
-            <img src="/static/pics/default/{{default.id2}}.jpg" alt="" id="image2" class="img-responsive rounded image" style='width:100%;height:260px'/>
-            <div class="text">{{box2.name}}</div>
-            <div class="text">{{box2.price}}</div>
+            <img src="/static/pics/default/{{box2.box_id}}.jpg" alt="" id="image2" class="img-responsive rounded image" style='width:100%;height:260px'/>
+            <div class="text"><span>Total: </span>{{box2.total}}<span> pcs</span>
+            <br>
+            <span>(Milk: </span>{{box2.milk}}<span> pcs</span>
+            Chocolate: </span>{{box2.chocolate}}<span> pcs</span>
+            Almond: </span>{{box2.almond}}<span> pcs</span>
+            Sugar: </span>{{box2.sugar}}<span> pcs)</span>
+            </div>
+            <div class="text"><span>Price: $</span>{{box2.price}}</div>
             <div style="padding:5px"></div>
             
            <div class="input-field col s12">
            <select id="pref2" name="pref2">
             <option value="" disabled selected>Quantity</option>
+            <option value="zero">0</option>
             <option value="one">1</option>
             <option value="two">2</option>
             <option value="three">3</option>
@@ -76,15 +91,21 @@
 
     <div class="col s4">
     <div class="img_wrap">
-            <img src="/static/pics/japanese/3.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
-              <input type="hidden" name="sequence" value="{{pic1.sequence}}"/>
-              <div class="text">{{box3.name}}</div>
-              <div class="text">{{box3.price}}</div>
+            <img src="/static/pics/default/{{box3.box_id}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+              <div class="text"><span>Total: </span>{{box3.total}}<span> pcs</span>
+            <br>
+            <span>(Milk: </span>{{box3.milk}}<span> pcs</span>
+            Chocolate: </span>{{box3.chocolate}}<span> pcs</span>
+            Almond: </span>{{box3.almond}}<span> pcs</span>
+            Sugar: </span>{{box3.sugar}}<span> pcs)</span>
+            </div>
+            <div class="text"><span>Price: $</span>{{box3.price}}</div>
             <div style="padding:5px"></div>
             
            <div class="input-field col s12">
            <select id="pref3" name="pref3">
             <option value="" disabled selected>Quantity</option>
+            <option value="zero">0</option>
             <option value="one">1</option>
             <option value="two">2</option>
             <option value="three">3</option>
@@ -97,16 +118,21 @@
 
     <div class="col s4">
     <div class="img_wrap">
-            <img src="/static/pics/japanese/3.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
-            
-              <input type="hidden" name="sequence" value="{{pic1.sequence}}"/>
-              <div class="text">{{box4.name}}</div>
-              <div class="text">{{box4.price}}</div>
+            <img src="/static/pics/default/{{box4.box_id}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+              <div class="text"><span>Total: </span>{{box4.total}}<span> pcs</span>
+            <br>
+            <span>(Milk: </span>{{box4.milk}}<span> pcs</span>
+            Chocolate: </span>{{box4.chocolate}}<span> pcs</span>
+            Almond: </span>{{box4.almond}}<span> pcs</span>
+            Sugar: </span>{{box4.sugar}}<span> pcs)</span>
+            </div>
+            <div class="text"><span>Price: $</span>{{box4.price}}</div>
             <div style="padding:5px"></div>
             
            <div class="input-field col s12">
            <select id="pref4" name="pref4">
             <option value="" disabled selected>Quantity</option>
+            <option value="zero">0</option>
             <option value="one">1</option>
             <option value="two">2</option>
             <option value="three">3</option>
@@ -119,16 +145,22 @@
 
     <div class="col s4">
     <div class="img_wrap">
-            <img src="/static/pics/japanese/3.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+            <img src="/static/pics/default/{{box5.box_id}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
             <form action="/browse" class="middle" method="POST">
-              <input type="hidden" name="sequence" value="{{pic1.sequence}}"/>
-              <div class="text">{{box5.name}}</div>
-              <div class="text">{{box5.price}}</div>
+              <div class="text"><span>Total: </span>{{box5.total}}<span> pcs</span>
+            <br>
+            <span>(Milk: </span>{{box5.milk}}<span> pcs</span>
+            Chocolate: </span>{{box5.chocolate}}<span> pcs</span>
+            Almond: </span>{{box5.almond}}<span> pcs</span>
+            Sugar: </span>{{box5.sugar}}<span> pcs)</span>
+            </div>
+            <div class="text"><span>Price: $</span>{{box5.price}}</div>
             <div style="padding:5px"></div>
             
            <div class="input-field col s12">
            <select id="pref5" name="pref5">
             <option value="" disabled selected>Quantity</option>
+            <option value="zero">0</option>
             <option value="one">1</option>
             <option value="two">2</option>
             <option value="three">3</option>
@@ -141,16 +173,22 @@
 
     <div class="col s4">
     <div class="img_wrap">
-            <img src="/static/pics/japanese/3.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+            <img src="/static/pics/default/{{box6.box_id}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
             <form action="/shoppingcart" class="middle" method="POST">
-              <input type="hidden" name="sequence" value="{{pic1.sequence}}"/>
-              <div class="text">{{box6.name}}</div>
-              <div class="text">{{box6.price}}</div>
+              <div class="text"><span>Total: </span>{{box6.total}}<span> pcs</span>
+            <br>
+            <span>(Milk: </span>{{box6.milk}}<span> pcs</span>
+            Chocolate: </span>{{box6.chocolate}}<span> pcs</span>
+            Almond: </span>{{box6.almond}}<span> pcs</span>
+            Sugar: </span>{{box6.sugar}}<span> pcs)</span>
+            </div>
+            <div class="text"><span>Price: $</span>{{box6.price}}</div>
             <div style="padding:5px"></div>
             
            <div class="input-field col s12">
            <select id="pref6" name="pref6">
             <option value="" disabled selected>Quantity</option>
+            <option value="zero">0</option>
             <option value="one">1</option>
             <option value="two">2</option>
             <option value="three">3</option>

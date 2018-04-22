@@ -21,8 +21,9 @@
       <ul id="nav-mobile" class="right" style='padding-right: 15px'>
         <span>Welcome </span><span>{{ user | safe}}</span>
         <li><a href="/choose">Home</a></li>
-        <li><a href="/shoppingcart">Shopping Cart{{cart.number}}</a></li>
+        <li><a href="/shoppingcart">Shopping Cart</a></li>
         <li><a href="/order">Order</a></li>      
+        <li><a href="/logout">Log Out</a></li>    
       </ul>
     </div>
   </nav>
@@ -52,7 +53,7 @@
                     <td>{{ notification.quantity }}</td>
                     <td>{{ notification.price }}</td>
                     <td>{{ notification.total }}</td>
-                    <td><button id="{{ notification['name'] }}" class="waves-effect waves-light btn-small grey lighten-1">Cancel Order</button></td>
+                    <td><button id="{{ notification['name'] }}" class="waves-effect waves-light btn-small grey lighten-1" href="/cancel">Cancel Order</button></td>
                   </tr>
                   {% endfor %}
         </tbody>
