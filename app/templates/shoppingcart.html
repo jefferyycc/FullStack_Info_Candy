@@ -11,89 +11,92 @@
     <script src="../static/js/interactions.js"></script>
 
   </head>
-  <body>
-<header>
-     <div class="navbar-fixed">
-      <nav>
-    <div class="nav-wrapper red lighten-3">
-      <a href="#" class="left brand-logo" style='padding-left: 15px'>Mr. J & Miss A</a>
 
-      <ul id="nav-mobile" class="right" style='padding-right: 15px'>
-        <span>Welcome </span><span>{{ user | safe}}</span>
-        <li><a href="/choose">Home</a></li>
-        <li><a href="/shoppingcart">Shopping Cart</a></li>
-        <li><a href="/order">Order</a></li>      
-        <li><a href="/logout">Log Out</a></li>      
-      </ul>
-    </div>
-  </nav>
-  </div>
+  <body>
+    <header>
+
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper red lighten-3">
+            <a href="#" class="left brand-logo" style='padding-left: 15px'>Mr. J & Miss A</a>
+
+            <ul id="nav-mobile" class="right" style='padding-right: 15px'>
+              <span>Welcome </span><span>{{ user | safe}}</span>
+              <li><a href="/choose">Home</a></li>
+              <li><a href="/shoppingcart">Shopping Cart</a></li>
+              <li><a href="/order">Order</a></li>      
+              <li><a href="/logout">Log Out</a></li>      
+            </ul>
+          </div>
+        </nav>
+      </div>
       
     </header>
 
     <div class="container">
-    <div class="row" style="text-align:center">
-      <h1>Your shopping cart</h1>
+      <div class="row" style="text-align:center">
+        <h1>Your shopping cart</h1>
       
         <form action='/order' method="POST"> 
-        <table class="striped">
-        <thead>
-          <tr>
-              <th>Item Name</th>
-              <th>Item Quantity</th>
-              <th>Item Price</th>
-          </tr>
-        </thead>
+          <table class="striped">
+            <thead>
+              <tr>
+                  <th>Item Name</th>
+                  <th>Item Quantity</th>
+                  <th>Item Price</th>
+              </tr>
+            </thead>
 
-        <tbody>
-                  {% for notification in notifications %}
-                  <tr>
-                    <td>{{ notification.box_id }}</td>
-                    <td>{{ notification.quan }} </td>
-                    <td>{{ notification.price }}</td>
-                    <td><button id="{{ notification['box_id'] }}" class="waves-effect waves-light btn-small grey lighten-1" type="button" href="/remove">Remove Item</button></td>
-                  </tr>
-                  {% endfor %}
-        </tbody>
-      </table>
-            <input type="hidden" name="notifications" value="{{notifications}}">
-        <div class= "place_order" style="margin: 20px">
-            <button class="waves-effect waves-light btn-large grey lighten-1" type="submit" name="submit" id="submit" style="margin-right: 10px"><i class="material-icons right">shopping_cart</i>Place Order</button>
+            <tbody>
+              {% for notification in notifications %}
+              <tr>
+                <td>{{ notification.box_id }}</td>
+                <td>{{ notification.quan }} </td>
+                <td>{{ notification.price }}</td>
+                <td><button id="{{ notification['box_id'] }}" class="waves-effect waves-light btn-small grey lighten-1" type="button" href="/remove">Remove Item</button></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
 
-      </form>
-          <a href="/choose" class="choose">
-            <button class="waves-effect waves-light btn-large grey lighten-1" type="button" style="margin-left: 10px" href="/choose"><i class="material-icons right">add_circle</i>Buy More</button>
-          </a>
-        </div>
+          <input type="hidden" name="notifications" value="{{notifications}}">
+            <div class= "place_order" style="margin: 20px">
+            <button class="waves-effect waves-light btn-large grey lighten-1" name="submit" id="submit" style="margin-right: 10px" onclick="placeOrder()"><i class="material-icons right">shopping_cart</i>Place Order</button>
 
-            <h1>You May Also Like...</h1>
+        </form>
+
+        <a href="/choose" class="choose">
+          <button class="waves-effect waves-light btn-large grey lighten-1" type="button" style="margin-left: 10px" href="/choose"><i class="material-icons right">add_circle</i>Buy More</button>
+        </a>
+      </div>
+
+      <h1>You May Also Like...</h1>
 
       <div class="col s4">
-    <div class="img_wrap">
-            
-            <img src="/static/pics/japanese/3.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
-      </div>
-      </div>
-          <div class="col s4">
-    <div class="img_wrap">
-            <img src="/static/pics/japanese/3.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
-      </div>
+        <div class="img_wrap">
+          <img src="/static/pics/default/05000505.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+        </div>
       </div>
 
-    <div class="col s4">
-    <div class="img_wrap">
-            <img src="/static/pics/japanese/3.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
-      </div>
-      </div>
-
-      </div>
+      <div class="col s4">
+        <div class="img_wrap">
+          <img src="/static/pics/default/05050500.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+        </div>
       </div>
 
-<footer class="page-footer red lighten-3" style='padding-left: 15px'>
-      <div class="footer-copyright red lighten-3">
-       © 2018 Copyright Mr. J & Miss A        
+      <div class="col s4">
+        <div class="img_wrap">
+          <img src="/static/pics/default/00050505.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+        </div>
       </div>
-</footer>
+
+    </div>
+
+      <footer class="page-footer red lighten-3" style='padding-left: 15px'>
+        <div class="footer-copyright red lighten-3">
+          © 2018 Copyright Mr. J & Miss A        
+        </div>
+      </footer>
       
   </body>
 </html>

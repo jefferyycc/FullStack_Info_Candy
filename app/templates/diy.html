@@ -13,7 +13,7 @@
     <script src="../static/js/diy.js"></script>
 </head>
 
-<body>
+<body  onload="addItem()">
 
     <header>
      <div class="navbar-fixed">
@@ -38,7 +38,7 @@
 </div>
 
 <div class="diy-form">
- <form action="/diy" method="POST">
+ <form action="shoppingcart" id="order">
 
 <div class="section white">
   <div class="row container" style="text-align:center">
@@ -46,7 +46,7 @@
     <div class="input-field col s4">
     <p>
       <label>
-        <input name="size" type="radio" value="5">
+        <input name="size" type="radio" value=5>
         <span>Small (5 pcs)</span>
       </label>
     </p>
@@ -55,7 +55,7 @@
     <div class="input-field col s4">
     <p>
       <label>
-        <input name="size" type="radio" value="10">
+        <input name="size" type="radio" value=10>
         <span>Medium (10 pcs)</span>
       </label>
     </p>
@@ -64,7 +64,7 @@
     <div class="input-field col s4">
     <p>
       <label>
-        <input name="size" type="radio" value="15">
+        <input name="size" type="radio" value=15>
         <span>Large (15 pcs)</span>
       </label>
     </p>
@@ -82,7 +82,7 @@
     <i class="material-icons medium">looks_two</i><h1> Adjust Candy Quautity</h1>
       
       <div class="input-field col s12 m6 l3">
-        <p>Milk</p>
+        <p>Candy No. 1</p>
         <img src="../static/pics/candy-flavor/milk.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:200px'/>
         <p class="range-field">
         <input type="range" id="flavor1" name="flavor1" min="0" max="15" value="0" step="5">
@@ -91,7 +91,7 @@
       </div>
 
       <div class="input-field col s12 m6 l3">
-        <p>Chocolate</p>
+        <p>Candy No. 2</p>
         <img src="../static/pics/candy-flavor/chocolate.jpg" alt="" id="image2" class="img-responsive rounded image" style='width:100%;height:200px'/>
         <p class="range-field">
         <input type="range" id="flavor2" name="flavor2" min="0" max="15" value="0" step="5">
@@ -100,7 +100,7 @@
       </div>
 
       <div class="input-field col s12 m6 l3">
-        <p>Almond</p>
+        <p>Candy No. 3</p>
         <img src="../static/pics/candy-flavor/almond.jpg" alt="" id="image3" class="img-responsive rounded image" style='width:100%;height:200px'/>
         <p class="range-field">
         <input type="range" id="flavor3" name="flavor3" min="0" max="15" value="0" step="5">
@@ -109,7 +109,7 @@
       </div>
 
       <div class="input-field col s12 m6 l3">
-        <p>Sugar</p>
+        <p>Candy No. 4</p>
         <img src="../static/pics/candy-flavor/caramel.jpg" alt="" id="image4" class="img-responsive rounded image" style='width:100%;height:200px'/>
         <p class="range-field">
         <input type="range" id="flavor4" name="flavor4" min="0" max="15" value="0" step="5">
@@ -135,21 +135,21 @@
       <div class="input-field col s12">
         <select id="box-num" name="box-num" required> 
          <option value="" disabled selected>Choose your option</option>
-         <option value="one">1</option>
-         <option value="two">2</option>
-         <option value="three">3</option>
-         <option value="four">4</option>
-         <option value="five">5</option>
-         <option value="six">6</option>
-         <option value="seven">7</option>
-         <option value="eight">8</option>
-         <option value="nine">9</option>
-         <option value="ten">10</option>
+         <option value=1>1</option>
+         <option value=2>2</option>
+         <option value=3>3</option>
+         <option value=4>4</option>
+         <option value=5>5</option>
+         <option value=6>6</option>
+         <option value=7>7</option>
+         <option value=8>8</option>
+         <option value=9>9</option>
+         <option value=10>10</option>
         </select>
       <label>Number of Box</label>
      </div>
 
-     <button type="submit" class="waves-effect waves-light btn-large grey lighten-1" id="submit">Add to Cart</button>
+     <button class="waves-effect waves-light btn-large grey lighten-1" onclick="addCartDIY()">Add to Cart</button>
   
   </div>
 </div> 
