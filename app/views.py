@@ -73,7 +73,7 @@ def test_place_order():
     from datetime import datetime
     import uuid
     # this dictionary comes from front-end.
-    order_info = {"email" : "jiaxun.song@outlook.com", 
+    order_info = {"email" : "jiaxun.song@outlook.com",
                   "boxes" : {"05050005" : 4, "15000000" : 2, "05001000" : 6}
                   }
     order_info["create_date"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -178,7 +178,7 @@ def register():
     phone = request.form.get("phone")
     if check_user(email):
         return render_template("register.html", message="The email already existed in the database!")
-    else: 
+    else:
         insert_user(email, password, first_name, last_name, street, city, state, zip_code, phone)
         return redirect(url_for('show_login'))
 
@@ -189,7 +189,7 @@ def login():
     if login_check(email, password):
         session['email'] = email
         return redirect(url_for('choose'))
-    else: 
+    else:
         return render_template("login.html", message="Your password is not correct.")
 
 @app.route('/logout')
@@ -301,7 +301,7 @@ def place_orders():
     from datetime import datetime
     import uuid
     # this dictionary comes from front-end.
-    email = session['email']    
+    email = session['email']
     order_info = request.get_json()
     print (order_info)
     order_info["email"] = email
@@ -317,5 +317,5 @@ def get_email():
     """
     Give js the email in flask session.
     """
-    email = session['email'] 
+    email = session['email']
     return json.dumps({"email" : email})
