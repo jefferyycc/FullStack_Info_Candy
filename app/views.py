@@ -11,6 +11,7 @@ import uuid
 # Access the models file to use SQL functions
 from .models import *
 
+
 # test
 @app.route('/test/check_user')
 def test_check_user():
@@ -277,6 +278,10 @@ def thank_you(payment_id):
         pay_via_email(order_id)
         select_payment(order_id, payment_id)
     return render_template('thankyou.html')
+
+@app.route('/thankyou',methods=['POST'])
+def thankyou():
+    return render_template('thankyou2.html')
 
 @app.route('/price_calculate', methods=['POST'])
 def price_calculate():
