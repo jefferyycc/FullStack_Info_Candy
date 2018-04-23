@@ -69,21 +69,22 @@ def get_single_box(box_id):
     """
     conn = get_connection()
     cur = conn.cursor()
-    cur.execute("SELECT SUM(Box.candy_amount*Candy.price), SUM(Box.candy_amount*Candy.calories) FROM Box, Candy WHERE Box.box_id=(?) AND Box.candy_name=Candy.candy_name", [box_id])
+    cur.execute("SELECT SUM(Box.candy_amount*Candy.price), SUM(Box.candy_amount*Candy.calories), SUM(Box.candy_amount) FROM Box, Candy WHERE Box.box_id=(?) AND Box.candy_name=Candy.candy_name", [box_id])
     price_cal = cur.fetchall()
     cur.execute("SELECT candy_name, candy_amount FROM Box WHERE box_id=(?)", [box_id])
     candy_info = cur.fetchall()
     conn.close()
     box_info = {c[0]:c[1] for c in candy_info}
-    # add one more variable 
-    box_info['total'] = candy_info[0][1] + candy_info[1][1] + candy_info[2][1] + candy_info[3][1]
-    box_info['milk'] = candy_info[0][1]
-    box_info['chocolate'] = candy_info[1][1]
-    box_info['almond'] = candy_info[2][1]
-    box_info['sugar'] = candy_info[3][1]
+    # add one more variable
+    box_info['total'] = price_cal[0][2]
+    # box_info['milk'] = candy_info[0][1]
+    # box_info['chocolate'] = candy_info[1][1]
+    # box_info['almond'] = candy_info[2][1]
+    # box_info['sugar'] = candy_info[3][1]
     box_info['price'] = price_cal[0][0]
     box_info['calories'] = price_cal[0][1]
     box_info['box_id'] = box_id
+    
     return box_info
 
 def place_order(order_info):

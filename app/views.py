@@ -182,7 +182,6 @@ def register():
         insert_user(email, password, first_name, last_name, street, city, state, zip_code, phone)
         return redirect(url_for('show_login'))
 
-
 @app.route('/login',methods=['POST'])
 def login():
     email = request.form.get("email")
@@ -206,67 +205,117 @@ def choose():
 
 @app.route('/default',methods=['GET'])
 def show_default():
-    box_id_list = ["10000000", "00100000", "00001000", "00000010", "05050500", "05000505"]
+    email = session['email']
+    box_id_list = ["10000000", "00100000", "00001000", "00050505", "05050500", "05000505"]
     box_info = {box_id:get_single_box(box_id) for box_id in box_id_list}
     email = session['email']
     info = get_user(email)
+    print (box_info)
     return render_template('defaultbox.html',box1=box_info["10000000"],box2=box_info["00100000"],box3=box_info["00001000"],
-        box4=box_info["00000010"],box5=box_info["05050500"],box6=box_info["05000505"],user=info[0][1])
-
-# need to revise
-@app.route('/default',methods=['POST'])
-def default():
-    pref1 = request.form.get("pref1")
-    pref2 = request.form.get("pref2")
-    pref3 = request.form.get("pref3")
-    pref4 = request.form.get("pref4")
-    pref5 = request.form.get("pref5")
-    pref6 = request.form.get("pref6")
-    # box_id_list = ["10000000", "00100000", "00001000", "00000010", "05050500", "05000505"]
-    # pref_list = [pref1, pref2, pref3, pref4, pref5, pref6]
-    cart_info = {}
-    cart_info['boxes'] = {"10000000": pref1, "00100000": pref2, "00001000": pref3, 
-    "00000010": pref4, "05050500": pref5, "05000505": pref6}
-    cart_info['create_date'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    cart_info['price'] = 0
-    cart_info['order_id'] = str(uuid.uuid3(uuid.NAMESPACE_DNS, session["email"] + cart_info["create_date"]))
-
-    session['cart_info'] = cart_info
-
-    email = session['email']
-    info = get_user(email)
-
-    return render_template('shoppingcart.html',notification= cart_info['boxes'],user=info[0][1])
+        box4=box_info["00050505"],box5=box_info["05050500"],box6=box_info["05000505"],user=info[0][1])
 
 @app.route('/diy',methods=['GET'])
 def show_diy():
     email = session['email']
     info = get_user(email)
-    return render_template('diy.html',user=info[0][1])
+    return render_template('diy.html', user=info[0][1])
 
 # need to revise
-@app.route('/order',methods=["POST"])
+@app.route('/order',methods=["POST", "GET"])
 def order():
-    order_info = {"email" : session['email'], 
-                  "boxes" : session['cart_info']['boxes']
-                  }
+    # TODO: display table
+    return render_template('order.html')
+
+@app.route('/shoppingcart', methods=['GET'])
+def shoppingcart():
+    # TODO: display table
+    email = session['email']
+    info = get_user(email)
+    return render_template('shoppingcart.html', user=info[0][1])
+
+@app.route('/thank_you/<payment_id>', methods=['GET'])
+def thank_you(payment_id):
+    email = session['email']
+    info = get_user(email)
+    first_name = info[0][1]
+    orders = get_order(email)
+    unpaid_orders = []
+    for order in orders:
+        if order[4] == 0:
+            unpaid_orders.append(order)
+    total_price = sum([order[3] for order in unpaid_orders])
+
+    payment_methods = get_payment()
+    for p in payment_methods:
+        if p[0] == payment_id:
+            payment = p[1]
+    print (email, first_name, total_price, payment)
+
+    # send email
+    with open(os.getcwd() + "/app/static/email.html", "r") as f:
+        email_html = f.read()
+    content = email_html.format(first_name, total_price, payment)
+
+    from_email = "<postmaster@sandbox37bfe0bbc27143a28e15b714ac3bc553.mailgun.org>"
+    data = {
+        'from': 'Mr. J & Miss A' + from_email,
+        'to': email,
+        'subject': 'Your order is on the way!',
+        'html': content
+        }
+    auth = ("api", "key-a92702a0870a9860418201112a5956c4")
+    domain = "sandbox37bfe0bbc27143a28e15b714ac3bc553.mailgun.org"
+    r = requests.post(
+        'https://api.mailgun.net/v3/{}/messages'.format(domain),
+        auth=auth,
+        data=data)
+    print (r.status_code)
+
+    # update database
+    for o in unpaid_orders:
+        order_id = o[0]
+        pay_via_email(order_id)
+        select_payment(order_id, payment_id)
+    return render_template('thankyou.html')
+
+@app.route('/price_calculate', methods=['POST'])
+def price_calculate():
+    """
+    Given dictionary of box information
+    Return total price.
+    """
+    box_info = request.get_json()
+    print (box_info)
+    box_id_list = [box_id for box_id in box_info]
+    # print ([get_single_box(box_id)["price"] for box_id in box_id_list])
+    price_full = [get_single_box(box_id)["price"] * box_info[box_id] for box_id in box_id_list]
+    price = sum(price_full)
+    # print (price)
+    return json.dumps({"price" : price})
+
+@app.route('/place_order', methods=['POST'])
+def place_orders():
+    """
+    Given order_info, place the order.
+    """
+    from datetime import datetime
+    import uuid
+    # this dictionary comes from front-end.
+    email = session['email']    
+    order_info = request.get_json()
+    print (order_info)
+    order_info["email"] = email
     order_info["create_date"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     order_info["order_id"] = str(uuid.uuid3(uuid.NAMESPACE_DNS, order_info["email"] + order_info["create_date"]))
     # this total_price calculating method can be used for front-end.
     order_info["total_price"] = sum([get_single_box(box[0])["price"] * box[1] for box in order_info["boxes"].items()])
     place_order(order_info)
+    return "True"
 
-    email = session['email']
-    info = get_user(email)
-
-    return render_template('order.html',notification=order_info,user=info[0][1])
-
-
-
-
-
-
-
-
-
-
+@app.route('/get_email', methods=['POST'])
+def get_email():
+    """
+    Give js the email in flask session.
+    """
+    email = session['email'] 
+    return json.dumps({"email" : email})

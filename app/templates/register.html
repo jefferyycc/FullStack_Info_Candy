@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html>
   <head>
     <!-- Compiled and minified CSS -->
@@ -10,68 +12,62 @@
     <script src="../static/js/login.js"></script>
 
   </head>
+
   <body>
-    <header>
-    </header>
 
-<div class="container" class="col s12">
-  <div class="row">
-    <form action="/register" method="POST" id="reg-form">
+    <div class="container" class="col s12">
       <div class="row">
-        <div class="input-field col s6">
-          <input id="first_name" type="text" class="validate" name="first_name" required>
-          <label for="first_name">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate" name="last_name" required>
-          <label for="last_name">Last Name</label>
-        </div>
-      </div>
-        <div class="input-field col s6">
-          <input id="email" type="email" class="validate" name="email" required>
-          <label for="email">Email</label>
-          <div style="text-align:center;color:red">{{message}}</div>
-        </div>
-        <div class="input-field col s6">
-          <input id="password" type="password" class="validate" name="password" minlength="6" required>
-          <label for="password">Password</label>
-        </div>
-      <div class="input-field col s12">
-          <input id="street" type="text" class="validate" name="street" required>
-          <label for="street">Street</label>
-        </div>
-      <div class="input-field col s6">
-          <input id="city" type="text" class="validate" name="city" required>
-          <label for="city">City</label>
-        </div>
-      <div class="input-field col s6">
-          <input id="state" type="text" class="validate" name="state" required>
-          <label for="state">State</label>
-      </div>
-      <div class="input-field col s6">
-          <input id="zip_code" type="text" class="validate" name="zip_code" required>
-          <label for="zip_code">Zip Code</label>
-      </div>
-      <div class="input-field col s6">
-          <input id="phone" type="text" class="validate" name="phone" required>
-          <label for="phone">Phone</label>
-      </div>
+        <form action="/register" method="POST" id="reg-form">
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="first_name" type="text" class="validate" name="first_name" required>
+              <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" type="text" class="validate" name="last_name" required>
+              <label for="last_name">Last Name</label>
+            </div>
+          </div>
+            <div class="input-field col s6">
+              <input id="email" type="email" class="validate" name="email" required>
+              <label for="email">Email</label>
+              <div style="text-align:center;color:red">{{message}}</div>
+            </div>
+            <div class="input-field col s6">
+              <input id="password" type="password" class="validate" name="password" minlength="6" required>
+              <label for="password">Password</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="street" type="text" class="validate" name="street" required>
+              <label for="street">Street</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="city" type="text" class="validate" name="city" required>
+              <label for="city">City</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="state" type="text" class="validate" name="state" required>
+              <label for="state">State</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="zip_code" type="text" class="validate" name="zip_code" required>
+              <label for="zip_code">Zip Code</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="phone" type="text" class="validate" name="phone" required>
+              <label for="phone">Phone</label>
+            </div>
 
-        <div class="input-field col s4 right">
-          <button class="btn btn-large btn-register waves-effect waves-light grey lighten-1" type="submit" name="action">Register
-            <i class="material-icons right">done</i>
-          </button>
-        </div>
+            <div class="input-field col s4 right">
+              <button class="btn btn-large btn-register waves-effect waves-light grey lighten-1" type="submit" name="action">Register
+                <i class="material-icons right">done</i>
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
-  </div>
-  <!-- <a title="Login" class="ngl btn-floating btn-large waves-effect waves-light red"><i class="material-icons">input</i></a> -->
-</div>
-    
-    
-  <footer>
-         
-  </footer>
-      
+      <!-- <a title="Login" class="ngl btn-floating btn-large waves-effect waves-light red"><i class="material-icons">input</i></a> -->
+    </div>
+        
   </body>
 </html>

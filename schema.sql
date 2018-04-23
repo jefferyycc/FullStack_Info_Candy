@@ -45,6 +45,7 @@ INSERT INTO `Customer`
 	(`email`, `first_name`, `last_name`, `street`, `city`, `state`, `zip`, `phone`)
 VALUES
 	( 'jiaxun.song@outlook.com', 'Jiaxun', 'Song', '605 Ohlone Ave Apt 629', 'Albany', 'CA', '94706', '5105410128'),
+  ( 'yucheng.lin@berkeley.edu', 'Yucheng', 'Lin', '123 San Pablo', 'Berkeley', 'CA', '94703', '5103216547'),
 	( 'alice@outlook.com', 'Alice', 'Yang', '605 Ohlone Ave Apt 629', 'Berkeley', 'CA', '94706', '5105410128');
 
 CREATE TABLE `Payment` (
@@ -87,4 +88,5 @@ INSERT INTO `Password`
 	(`email`, `password`)
 VALUES
 	( 'jiaxun.song@outlook.com', '12345678'),
+  ( 'yucheng.lin@berkeley.edu', '12345678'),
 	( 'alice@outlook.com', '87654321');
