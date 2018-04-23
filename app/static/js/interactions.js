@@ -1,47 +1,42 @@
 // add something if we need some interaction in javascript.
-  // var elem = document.querySelector('select');
-  // var instance = M.FormSelect.init(elem, options);
+// var elem = document.querySelector('select');
+// var instance = M.FormSelect.init(elem, options);
 
-  // Or with jQuery
+// Or with jQuery
 
-  $(document).ready(function(){
+$(document).ready(function(){
 
-  $('.carousel.carousel-slider').carousel({
-    fullWidth: true,
-    indicators: true
-  });
+	$('.carousel.carousel-slider').carousel({
+		fullWidth: true,
+		indicators: true
+	});
 
-  setInterval(function(){
-  	$('.carousel.carousel-slider').carousel('next');
-  },2000)
-  });
+	setInterval(function(){
+		$('.carousel.carousel-slider').carousel('next');
+		},2000);
 
-  $(document).ready(function(){
-    var elem = document.querySelector('.fixed-action-btn');
-  	var instance = M.FloatingActionButton.init(elem, {
-    direction: 'left',
-    hoverEnabled: false
-  });
-  });
-  
-  $(document).ready(function(){
-    $('.parallax').parallax();
-  });
+	var elem = document.querySelector('.fixed-action-btn');
 
-   $(document).ready(function(){
-    $('select').formSelect();
-  });
+	var instance = M.FloatingActionButton.init(elem, {
+		direction: 'left',
+		hoverEnabled: false
+	});
+
+	$('.parallax').parallax();
+
+	$('select').formSelect();
+
+});
 
 function addItem() {
-	url = "http://0.0.0.0:8081/get_email"
+	url = "http://0.0.0.0:8081/get_email";
     var req = new XMLHttpRequest();
     req.open('POST', url, true);
 
     req.onload = function() {
 		if (req.status === 200) {
-			var data=JSON.parse(req.responseText);
+			var data = JSON.parse(req.responseText);
 			var email = data["email"];
-			console.log(email);
 			if (!(localStorage.getItem('shoppingCart'))){
 				// initialize shoppingCart in localStorage
 				localStorage.setItem('shoppingCart', JSON.stringify({}));
@@ -56,13 +51,52 @@ function addItem() {
 		} else {
 			alert(req.status);
 		}
+
+		function showlist(){
+			var item_html = "<tr id={{id}} class='buy_item'><td>{{item}}</td><td class='qty'>{{qty}}</td><td class='price'>{{price}}</td><td id={{del_id}} data-del-id='{{delid}}' class='del_btn'>Remove Item</td></tr>";
+
+			var total_html="<tr class='buy_item total'><td>Total Price</td><td></td><td class='price'>{{price}}</td></tr>";
+
+			var itemName = Object.keys(shoppingCart[email]['boxes']);
+			var itemQty = Object.values(shoppingCart[email]['boxes']);
+			for (i=0; i<itemName.length; i++) {
+				var item = itemName[i];
+				var qty = itemQty[i];
+				var price = 10 * qty;
+				var item_id = "buyitem_" + i;
+				var del_item_id = "del_buyitem_" + i;
+
+				total_price = shoppingCart[email]['totalPrice'];
+
+				var current_item_html = item_html.replace("{{item}}", item).replace("{{id}}", item_id).replace("{{qty}}", qty).replace("{{del_id}}", del_item_id).replace("{{price}}", price).replace("{{delid}}", i);
+
+				$("#diaplayshoppingcart").append(current_item_html);
+				$("#"+del_item_id).click(
+					function(){
+						remove_item($(this).attr("data-del-id"));
+					});
+			}
+
+			var current_total_html = total_html.replace("{{price}}", total_price);
+			$("#diaplayshoppingcart").append(current_total_html);
+		}
+
+		showlist();
     };
+
+    // need to revise: not "list"
+    // need to add: delete item from session
+	function remove_item(id){
+		shoplist.list.splice(id,1);
+		showlist();
+	}
+
     req.send();
 }
 
 // add default boxes into shopping cart.
 function addCartDefault() {
-	url = "http://0.0.0.0:8081/get_email"
+	url = "http://0.0.0.0:8081/get_email";
     var req = new XMLHttpRequest();
     req.open('POST', url, true);
 
@@ -82,26 +116,26 @@ function addCartDefault() {
 			var pref6 = parseInt($("#pref6 option:selected").val());
 
 			var box = shoppingCart[email]["boxes"];
-			if (pref1 != 0 && !!pref1) {
+			if (pref1 !== 0 && !!pref1) {
 				box["10000000"] = "10000000" in box ? box["10000000"] + pref1 : pref1;
-			};
-			if (pref2 != 0 && !!pref2) {
+			}
+			if (pref2 !== 0 && !!pref2) {
 				box["00100000"] = "00100000" in box ? box["00100000"] + pref2 : pref2;
-			};
-			if (pref3 != 0 && !!pref3) {
+			}
+			if (pref3 !== 0 && !!pref3) {
 				box["00001000"] = "00001000" in box ? box["00001000"] + pref3 : pref3;
-			};
-			if (pref4 != 0 && !!pref4) {
+			}
+			if (pref4 !== 0 && !!pref4) {
 				box["00050505"] = "00050505" in box ? box["00050505"] + pref4 : pref4;
-			};
-			if (pref5 != 0 && !!pref5) {
+			}
+			if (pref5 !== 0 && !!pref5) {
 				box["05050500"] = "05050500" in box ? box["05050500"] + pref5 : pref5;
-			};
-			if (pref6 != 0 && !!pref6) {
+			}
+			if (pref6 !== 0 && !!pref6) {
 				box["05000505"] = "05000505" in box ? box["05000505"] + pref6 : pref6;
-			};
+			}
 
-			url_web = "http://0.0.0.0:8081/price_calculate"
+			url_web = "http://0.0.0.0:8081/price_calculate";
 		    var req_inside = new XMLHttpRequest();
 		    req_inside.open('POST', url_web, false);
 		    req_inside.setRequestHeader("Content-type", "application/json");
@@ -128,7 +162,7 @@ function addCartDefault() {
 
 // add DIY boxes into shopping cart.
 function addCartDIY() {
-	url = "http://0.0.0.0:8081/get_email"
+	url = "http://0.0.0.0:8081/get_email";
     var req = new XMLHttpRequest();
     req.open('POST', url, true);
 
@@ -149,12 +183,12 @@ function addCartDIY() {
 			  var s = String(this);
 			  while (s.length < (size || 2)) {s = "0" + s;}
 			  return s;
-			}
+			};
 			var box_id = C1.pad(2).concat(C2.pad(2), C3.pad(2), C4.pad(2));
 			var qty = parseInt($("#box-num option:selected").val());
 			box[box_id] = box_id in box ? box[box_id] + qty : qty;
 
-			url_web = "http://0.0.0.0:8081/price_calculate"
+			url_web = "http://0.0.0.0:8081/price_calculate";
 		    var req_inside = new XMLHttpRequest();
 		    req_inside.open('POST', url_web, false);
 		    req_inside.setRequestHeader("Content-type", "application/json");
@@ -179,7 +213,7 @@ function addCartDIY() {
 
 // place order
 function placeOrder() {
-	url = "http://0.0.0.0:8081/get_email"
+	url = "http://0.0.0.0:8081/get_email";
     var req = new XMLHttpRequest();
     req.open('POST', url, true);
 
@@ -189,8 +223,8 @@ function placeOrder() {
 			var email = data["email"];
 		    console.log(email);
 			var shoppingCart = JSON.parse(localStorage.shoppingCart);
-			shoppingCartCurrentUser = shoppingCart[email]
-			url_web = "http://0.0.0.0:8081/place_order"
+			shoppingCartCurrentUser = shoppingCart[email];
+			url_web = "http://0.0.0.0:8081/place_order";
 		    var req_inside = new XMLHttpRequest();
 		    req_inside.open('POST', url_web, false);
 		    req_inside.setRequestHeader("Content-type", "application/json");

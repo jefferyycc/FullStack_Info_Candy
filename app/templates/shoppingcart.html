@@ -12,7 +12,7 @@
 
   </head>
 
-  <body>
+  <body onload="addItem()">
     <header>
 
       <div class="navbar-fixed">
@@ -47,16 +47,8 @@
               </tr>
             </thead>
 
-            <tbody>
-              {% for notification in notifications %}
-              <tr>
-                <td>{{ notification.box_id }}</td>
-                <td>{{ notification.quan }} </td>
-                <td>{{ notification.price }}</td>
-                <td><button id="{{ notification['box_id'] }}" class="waves-effect waves-light btn-small grey lighten-1" type="button" href="/remove">Remove Item</button></td>
-              </tr>
-              {% endfor %}
-            </tbody>
+            <tbody id="diaplayshoppingcart"></tbody>
+
           </table>
 
           <input type="hidden" name="notifications" value="{{notifications}}">
