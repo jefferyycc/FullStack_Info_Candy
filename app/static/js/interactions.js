@@ -59,10 +59,11 @@ function addItem() {
 
 			var itemName = Object.keys(shoppingCart[email]['boxes']);
 			var itemQty = Object.values(shoppingCart[email]['boxes']);
+			var itemPrice = Object.values(shoppingCart[email]['boxprice']);
 			for (i=0; i<itemName.length; i++) {
 				var item = itemName[i];
 				var qty = itemQty[i];
-				var price = 10 * qty;
+				var price = itemPrice[i];
 				var item_id = "buyitem_" + i;
 				var del_item_id = "del_buyitem_" + i;
 
@@ -86,10 +87,22 @@ function addItem() {
 
     // need to revise: not "list"
     // need to add: delete item from session
-	function remove_item(id){
-		shoplist.list.splice(id,1);
-		showlist();
-	}
+
+	// $(".btn").click(
+	// 	function(){
+	// 		shoplist.list.push(
+	// 			{
+	// 				name: $("#test_name").val(),
+	// 				price: $("#test_price").val()
+	// 			}
+	// 		);
+	// 		showlist();
+	// 	});
+
+	// function remove_item(id){
+	// 	shoplist.list.splice(id,1);
+	// 	showlist();
+	// }
 
     req.send();
 }
@@ -104,7 +117,6 @@ function addCartDefault() {
 		if (req.status === 200) {
 			var data=JSON.parse(req.responseText);
 			var email = data["email"];
-			console.log(email);
 			var shoppingCart = JSON.parse(localStorage.shoppingCart);
 			// input: six qty pref1, prf2 ..., for following default boxes:
 			// ["10000000", "00100000", "00001000", "00000010", "05050500", "05000505"]
@@ -141,14 +153,13 @@ function addCartDefault() {
 		    req_inside.setRequestHeader("Content-type", "application/json");
 		    req_inside.onload = function() {
 				if (req_inside.status === 200) {
-					console.log("I am here!!");
 					var data=JSON.parse(req_inside.responseText);
-					console.log(data);
 					shoppingCart[email]["boxes"] = box;
 					shoppingCart[email]["totalPrice"] = data["price"];
+					shoppingCart[email]["boxprice"] = data["itemprice"];
 					localStorage.shoppingCart=JSON.stringify(shoppingCart);
 				} else {
-					console.log(req_inside.status);
+					alert(req_inside.status);
 				}
 		    };
 		    // await sleep(1000);
@@ -170,14 +181,13 @@ function addCartDIY() {
 		if (req.status === 200) {
 			var data=JSON.parse(req.responseText);
 			var email = data["email"];
-			console.log(email);
 			var shoppingCart = JSON.parse(localStorage.shoppingCart);
 			var box = shoppingCart[email]["boxes"];
-			var size = 15; // TODO: should be from front-end
-			var C1 = 5; // TODO: should be from front-end
-			var C2 = 0; // TODO: should be from front-end
-			var C3 = 5; // TODO: should be from front-end
-			var C4 = 5; // TODO: should be from front-end
+			var size = parseInt($('input[name="size"]:checked').val());
+			var C1 = parseInt($('input[name="flavor1"]').val());
+			var C2 = parseInt($('input[name="flavor2"]').val());
+			var C3 = parseInt($('input[name="flavor3"]').val());
+			var C4 = parseInt($('input[name="flavor4"]').val());
 
 			Number.prototype.pad = function(size) {
 			  var s = String(this);
@@ -198,6 +208,7 @@ function addCartDIY() {
 					var data=JSON.parse(req_inside.responseText);
 					shoppingCart[email]["boxes"] = box;
 					shoppingCart[email]["totalPrice"] = data["price"];
+					shoppingCart[email]["boxprice"] = data["itemprice"];
 					localStorage.shoppingCart=JSON.stringify(shoppingCart);
 				} else {
 					alert(req_inside.status);
@@ -221,7 +232,6 @@ function placeOrder() {
 		if (req.status === 200) {
 			var data=JSON.parse(req.responseText);
 			var email = data["email"];
-		    console.log(email);
 			var shoppingCart = JSON.parse(localStorage.shoppingCart);
 			shoppingCartCurrentUser = shoppingCart[email];
 			url_web = "http://0.0.0.0:8081/place_order";

@@ -39,22 +39,23 @@
         <table class="centered">
           <thead>
             <tr>
-                <th>Item Name</th>
-                <th>Item Quantity</th>
-                <th>Item Price</th>
-                <th>Item Total</th>
-                <th></th>
+                <th>Order ID</th>
+                <th>Order Time</th>
+                <th>Order Price</th>
+                <th>Payment</th>
+                <th>Paid by</th>
             </tr>
           </thead>
 
           <tbody>
-            {% for notification in notifications %}
+            {% for order in orders %}
             <tr>
-              <td>{{ notification.name }}</td>
-              <td>{{ notification.quantity }}</td>
-              <td>{{ notification.price }}</td>
-              <td>{{ notification.total }}</td>
-              <td><button id="{{ notification['name'] }}" class="waves-effect waves-light btn-small grey lighten-1" href="/cancel">Cancel Order</button></td>
+              <td>{{ order[0] }}</td>
+              <td>{{ order[2] }}</td>
+              <td>{{ order[3] }}</td>
+              <td>{{ order[4] }}</td>
+              <td>{{ order[5] }}</td>
+              <td><button id="{{ order[1] }}" class="waves-effect waves-light btn-small grey lighten-1" href="/cancel">Cancel Order</button></td>
             </tr>
             {% endfor %}
           </tbody>
