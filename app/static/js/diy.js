@@ -18,7 +18,7 @@ function moveChange() {
     var C2 = parseInt($('input[name="flavor2"]').val());
     var C3 = parseInt($('input[name="flavor3"]').val());
     var C4 = parseInt($('input[name="flavor4"]').val());
-    var totalCandy = C1 + C2 + C3 + C4
+    var totalCandy = C1 + C2 + C3 + C4;
 
     $('#flavor1-quan').text(C1);
     $('#flavor2-quan').text(C2);
@@ -26,13 +26,13 @@ function moveChange() {
     $('#flavor4-quan').text(C4);
     $('#total-quan').text(totalCandy);
 
-    $('input[name="flavor1"]').attr('max', size-totalCandy+C1)
-    $('input[name="flavor2"]').attr('max', size-totalCandy+C2)
-    $('input[name="flavor3"]').attr('max', size-totalCandy+C3)
-    $('input[name="flavor4"]').attr('max', size-totalCandy+C4)
+    $('input[name="flavor1"]').attr('max', size-totalCandy+C1);
+    $('input[name="flavor2"]').attr('max', size-totalCandy+C2);
+    $('input[name="flavor3"]').attr('max', size-totalCandy+C3);
+    $('input[name="flavor4"]').attr('max', size-totalCandy+C4);
 
     if (totalCandy < size) {
-        var needMore = size - totalCandy
+        var needMore = size - totalCandy;
         $('#alertQty').text('You need ' + needMore + ' more candies!');
     } else {
         $('#alertQty').text('Good to go!');

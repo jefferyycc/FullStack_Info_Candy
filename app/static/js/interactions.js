@@ -31,7 +31,7 @@ $(document).ready(function(){
 function addItem() {
 	url = "http://0.0.0.0:8081/get_email";
     var req = new XMLHttpRequest();
-    req.open('POST', url, true);
+    req.open('POST', url, false);
 
     req.onload = function() {
 		if (req.status === 200) {
@@ -46,7 +46,7 @@ function addItem() {
 			// initialize for the email.
 			if (!(email in shoppingCart)) {
 				shoppingCart[email] = {"boxes" : {}, "totalPrice" : 0};
-				localStorage.shoppingCart=JSON.stringify(shoppingCart);	
+				localStorage.shoppingCart = JSON.stringify(shoppingCart);	
 			}
 		} else {
 			alert(req.status);
@@ -54,16 +54,25 @@ function addItem() {
 
 		var item_html = "<tr id={{id}} class='buy_item'><td>{{item}}</td><td class='qty'>{{qty}}</td><td class='price'>{{price}}</td><td id={{del_id}} data-del-id='{{delid}}' class='del_btn'>Remove Item</td></tr>";
 
-		var total_html="<tr class='buy_item total'><td>Total Price</td><td></td><td class='price'>{{price}}</td></tr>";
+		var total_html = "<tr class='buy_item total'><td>Total Price</td><td></td><td class='price'>{{price}}</td></tr>";
 
 		// show shopping cart
 		function showlist(){
 
 			$("#displayshoppingcart").html("");
 
+			var shoppingCart = JSON.parse(localStorage.shoppingCart);
+			console.log(shoppingCart)
 			var itemName = Object.keys(shoppingCart[email]['boxes']);
 			var itemQty = Object.values(shoppingCart[email]['boxes']);
-			var itemPrice = Object.values(shoppingCart[email]['boxprice']);
+			console.log(itemName);
+			console.log(itemQty);
+			var itemPrice = shoppingCart[email]['boxprice'];
+			var total_price = shoppingCart[email]['totalPrice'];
+			console.log(itemPrice);
+			console.log(total_price);
+			// Price delay ??
+
 			for (i=0; i<itemName.length; i++) {
 				var item = itemName[i];
 				var qty = itemQty[i];
@@ -71,23 +80,21 @@ function addItem() {
 				var item_id = "buyitem_" + i;
 				var del_item_id = "del_buyitem_" + i;
 
-				total_price = shoppingCart[email]['totalPrice'];
-
 				var current_item_html = item_html.replace("{{item}}", item).replace("{{id}}", item_id).replace("{{qty}}", qty).replace("{{del_id}}", del_item_id).replace("{{price}}", price).replace("{{delid}}", i);
 
 				$("#displayshoppingcart").append(current_item_html);
 
 				$("#"+del_item_id).click(
 					function(){
-						id = $(this).attr("data-del-id")
-						delete shoppingCart[email]['boxes'][itemName[id]]
-						delete shoppingCart[email]['boxprice'][id]
-						localStorage.shoppingCart=JSON.stringify(shoppingCart);
+						id = $(this).attr("data-del-id");
+						delete shoppingCart[email]['boxes'][itemName[id]];
+						localStorage.shoppingCart = JSON.stringify(shoppingCart);
+						addCartDefault();
 						showlist();
 					});
 			}
-
 			var current_total_html = total_html.replace("{{price}}", total_price);
+			console.log(total_price);
 			$("#displayshoppingcart").append(current_total_html);
 		}
 
@@ -101,11 +108,11 @@ function addItem() {
 function addCartDefault() {
 	url = "http://0.0.0.0:8081/get_email";
     var req = new XMLHttpRequest();
-    req.open('POST', url, true);
+    req.open('POST', url, false);
 
     req.onload = function() {
 		if (req.status === 200) {
-			var data=JSON.parse(req.responseText);
+			var data = JSON.parse(req.responseText);
 			var email = data["email"];
 			var shoppingCart = JSON.parse(localStorage.shoppingCart);
 			// input: six qty pref1, prf2 ..., for following default boxes:
@@ -143,11 +150,11 @@ function addCartDefault() {
 		    req_inside.setRequestHeader("Content-type", "application/json");
 		    req_inside.onload = function() {
 				if (req_inside.status === 200) {
-					var data=JSON.parse(req_inside.responseText);
+					var data = JSON.parse(req_inside.responseText);
 					shoppingCart[email]["boxes"] = box;
 					shoppingCart[email]["totalPrice"] = data["price"];
 					shoppingCart[email]["boxprice"] = data["itemprice"];
-					localStorage.shoppingCart=JSON.stringify(shoppingCart);
+					localStorage.shoppingCart = JSON.stringify(shoppingCart);
 				} else {
 					alert(req_inside.status);
 				}
@@ -165,11 +172,11 @@ function addCartDefault() {
 function addCartDIY() {
 	url = "http://0.0.0.0:8081/get_email";
     var req = new XMLHttpRequest();
-    req.open('POST', url, true);
+    req.open('POST', url, false);
 
     req.onload = function() {
 		if (req.status === 200) {
-			var data=JSON.parse(req.responseText);
+			var data = JSON.parse(req.responseText);
 			var email = data["email"];
 			var shoppingCart = JSON.parse(localStorage.shoppingCart);
 			var box = shoppingCart[email]["boxes"];
@@ -195,11 +202,11 @@ function addCartDIY() {
 
 		    req_inside.onload = function() {
 				if (req_inside.status === 200) {
-					var data=JSON.parse(req_inside.responseText);
+					var data = JSON.parse(req_inside.responseText);
 					shoppingCart[email]["boxes"] = box;
 					shoppingCart[email]["totalPrice"] = data["price"];
 					shoppingCart[email]["boxprice"] = data["itemprice"];
-					localStorage.shoppingCart=JSON.stringify(shoppingCart);
+					localStorage.shoppingCart = JSON.stringify(shoppingCart);
 				} else {
 					alert(req_inside.status);
 				}
@@ -216,11 +223,11 @@ function addCartDIY() {
 function placeOrder() {
 	url = "http://0.0.0.0:8081/get_email";
     var req = new XMLHttpRequest();
-    req.open('POST', url, true);
+    req.open('POST', url, false);
 
     req.onload = function() {
 		if (req.status === 200) {
-			var data=JSON.parse(req.responseText);
+			var data = JSON.parse(req.responseText);
 			var email = data["email"];
 			var shoppingCart = JSON.parse(localStorage.shoppingCart);
 			shoppingCartCurrentUser = shoppingCart[email];
@@ -238,7 +245,7 @@ function placeOrder() {
 		    };
 		    req_inside.send(JSON.stringify(shoppingCartCurrentUser));
 		    delete shoppingCart[email];
-		    localStorage.shoppingCart=JSON.stringify(shoppingCart);
+		    localStorage.shoppingCart = JSON.stringify(shoppingCart);
 		} else {
 			alert(req.status);
 		}
