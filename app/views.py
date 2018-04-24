@@ -293,8 +293,6 @@ def place_orders():
     """
     Given order_info, place the order.
     """
-    from datetime import datetime
-    import uuid
     # this dictionary comes from front-end.
     email = session['email']    
     order_info = request.get_json()

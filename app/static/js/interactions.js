@@ -52,10 +52,14 @@ function addItem() {
 			alert(req.status);
 		}
 
-		function showlist(){
-			var item_html = "<tr id={{id}} class='buy_item'><td>{{item}}</td><td class='qty'>{{qty}}</td><td class='price'>{{price}}</td><td id={{del_id}} data-del-id='{{delid}}' class='del_btn'>Remove Item</td></tr>";
+		var item_html = "<tr id={{id}} class='buy_item'><td>{{item}}</td><td class='qty'>{{qty}}</td><td class='price'>{{price}}</td><td id={{del_id}} data-del-id='{{delid}}' class='del_btn'>Remove Item</td></tr>";
 
-			var total_html="<tr class='buy_item total'><td>Total Price</td><td></td><td class='price'>{{price}}</td></tr>";
+		var total_html="<tr class='buy_item total'><td>Total Price</td><td></td><td class='price'>{{price}}</td></tr>";
+
+		// show shopping cart
+		function showlist(){
+
+			$("#displayshoppingcart").html("");
 
 			var itemName = Object.keys(shoppingCart[email]['boxes']);
 			var itemQty = Object.values(shoppingCart[email]['boxes']);
@@ -71,38 +75,24 @@ function addItem() {
 
 				var current_item_html = item_html.replace("{{item}}", item).replace("{{id}}", item_id).replace("{{qty}}", qty).replace("{{del_id}}", del_item_id).replace("{{price}}", price).replace("{{delid}}", i);
 
-				$("#diaplayshoppingcart").append(current_item_html);
+				$("#displayshoppingcart").append(current_item_html);
+
 				$("#"+del_item_id).click(
 					function(){
-						remove_item($(this).attr("data-del-id"));
+						id = $(this).attr("data-del-id")
+						delete shoppingCart[email]['boxes'][itemName[id]]
+						delete shoppingCart[email]['boxprice'][id]
+						localStorage.shoppingCart=JSON.stringify(shoppingCart);
+						showlist();
 					});
 			}
 
 			var current_total_html = total_html.replace("{{price}}", total_price);
-			$("#diaplayshoppingcart").append(current_total_html);
+			$("#displayshoppingcart").append(current_total_html);
 		}
 
 		showlist();
     };
-
-    // need to revise: not "list"
-    // need to add: delete item from session
-
-	// $(".btn").click(
-	// 	function(){
-	// 		shoplist.list.push(
-	// 			{
-	// 				name: $("#test_name").val(),
-	// 				price: $("#test_price").val()
-	// 			}
-	// 		);
-	// 		showlist();
-	// 	});
-
-	// function remove_item(id){
-	// 	shoplist.list.splice(id,1);
-	// 	showlist();
-	// }
 
     req.send();
 }
