@@ -310,5 +310,19 @@ def get_email():
     """
     Give js the email in flask session.
     """
-    email = session['email'] 
+    email = session['email']
     return json.dumps({"email" : email})
+
+@app.route('/cancelorder', methods=['POST'])
+def cancelorder():
+    """
+    Given order_id, cancel the order.
+    """
+    email = session['email']
+    orders = get_order(email)
+    order_id = request.get_json()
+    print (order_id)
+    if cancel_order(order_id):
+        return "<div>Order cancelled! {}<div/>".format(order_id)
+    else:
+        return "<div>Order does not exist! {}<div/>".format(order_id)

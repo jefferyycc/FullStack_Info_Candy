@@ -252,3 +252,41 @@ function placeOrder() {
     };
     req.send();
 }
+
+function cancelOrder() {
+	url = "http://0.0.0.0:8081/get_email";
+    var req = new XMLHttpRequest();
+    req.open('POST', url, false);
+
+    req.onload = function() {
+		if (req.status === 200) {
+			var data = JSON.parse(req.responseText);
+			var email = data["email"];
+			// var shoppingCart = JSON.parse(localStorage.shoppingCart);
+			// shoppingCartCurrentUser = shoppingCart[email];
+
+			$('tbody').on('click', 'button', function() {
+				var orderID = this.id;
+
+				url_web = "http://0.0.0.0:8081/cancelorder";
+			    var req_inside = new XMLHttpRequest();
+			    req_inside.open('POST', url_web, false);
+			    req_inside.setRequestHeader("Content-type", "application/json");
+
+			    req_inside.onload = function() {
+					if (req_inside.status === 200) {
+
+					} else {
+						alert(req_inside.status);
+					}
+			    };
+			    req_inside.send(JSON.stringify(orderID));
+
+			})
+
+		} else {
+			alert(req.status);
+		}
+    };
+    req.send();
+}
