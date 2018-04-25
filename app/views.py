@@ -11,6 +11,7 @@ import uuid
 # Access the models file to use SQL functions
 from .models import *
 
+
 # test
 @app.route('/test/check_user')
 def test_check_user():
@@ -73,7 +74,7 @@ def test_place_order():
     from datetime import datetime
     import uuid
     # this dictionary comes from front-end.
-    order_info = {"email" : "jiaxun.song@outlook.com", 
+    order_info = {"email" : "jiaxun.song@outlook.com",
                   "boxes" : {"05050005" : 4, "15000000" : 2, "05001000" : 6}
                   }
     order_info["create_date"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -178,7 +179,7 @@ def register():
     phone = request.form.get("phone")
     if check_user(email):
         return render_template("register.html", message="The email already existed in the database!")
-    else: 
+    else:
         insert_user(email, password, first_name, last_name, street, city, state, zip_code, phone)
         return redirect(url_for('show_login'))
 
@@ -189,7 +190,7 @@ def login():
     if login_check(email, password):
         session['email'] = email
         return redirect(url_for('choose'))
-    else: 
+    else:
         return render_template("login.html", message="Your password is not correct.")
 
 @app.route('/logout')
@@ -274,6 +275,10 @@ def thank_you(payment_id):
         select_payment(order_id, payment_id)
     return render_template('thankyou.html')
 
+@app.route('/thankyou',methods=['POST'])
+def thankyou():
+    return render_template('thankyou2.html')
+
 @app.route('/price_calculate', methods=['POST'])
 def price_calculate():
     """
@@ -292,7 +297,7 @@ def place_orders():
     Given order_info, place the order.
     """
     # this dictionary comes from front-end.
-    email = session['email']    
+    email = session['email']
     order_info = request.get_json()
     order_info["email"] = email
     order_info["create_date"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
