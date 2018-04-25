@@ -39,22 +39,21 @@
         <table class="centered">
           <thead>
             <tr>
-                <th>Item Name</th>
-                <th>Item Quantity</th>
-                <th>Item Price</th>
-                <th>Item Total</th>
-                <th></th>
+                <th>Order Time</th>
+                <th>Order Price</th>
+                <th>Payment</th>
+                <th>Paid by</th>
             </tr>
           </thead>
 
-          <tbody>
-            {% for notification in notifications %}
+          <tbody id="displayordersummary">
+            {% for order in orders %}
             <tr>
-              <td>{{ notification.name }}</td>
-              <td>{{ notification.quantity }}</td>
-              <td>{{ notification.price }}</td>
-              <td>{{ notification.total }}</td>
-              <td><button id="{{ notification['name'] }}" class="waves-effect waves-light btn-small grey lighten-1" href="/cancel">Cancel Order</button></td>
+              <td>{{ order[2] }}</td>
+              <td>{{ order[3] }}</td>
+              <td>{{ order[4] }}</td>
+              <td>{{ order[5] }}</td>
+              <td><button id="{{ order[0] }}" class="waves-effect waves-light btn-small grey lighten-1" onclick="cancelOrder()">Cancel Order</button></td>
             </tr>
             {% endfor %}
           </tbody>
@@ -72,8 +71,8 @@
             <a href = "/thank_you/2"> <img src="../static/pics/wechat.png" alt="" id="wechat" class="img-responsive rounded image" style='width:75%;height:260px'/></a>
           </div>
         </div>
-
-        <form action="/thankyou" method="POST">
+<!-- 
+        <form action="/thank_you/3">
           <script
             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="pk_test_KeWxRITcN5Jegk8uww6yEObg"
@@ -84,7 +83,7 @@
             data-locale="auto">
           </script>
         </form>
-
+ -->
       </div>
     </div>
 

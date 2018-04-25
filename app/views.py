@@ -209,9 +209,7 @@ def show_default():
     email = session['email']
     box_id_list = ["10000000", "00100000", "00001000", "00050505", "05050500", "05000505"]
     box_info = {box_id:get_single_box(box_id) for box_id in box_id_list}
-    email = session['email']
     info = get_user(email)
-    print (box_info)
     return render_template('defaultbox.html',box1=box_info["10000000"],box2=box_info["00100000"],box3=box_info["00001000"],
         box4=box_info["00050505"],box5=box_info["05050500"],box6=box_info["05000505"],user=info[0][1])
 
@@ -221,15 +219,15 @@ def show_diy():
     info = get_user(email)
     return render_template('diy.html', user=info[0][1])
 
-# need to revise
 @app.route('/order',methods=["POST", "GET"])
 def order():
-    # TODO: display table
-    return render_template('order.html')
+    email = session['email']
+    info = get_user(email)
+    orders = get_order(email)
+    return render_template('order.html', orders=orders)
 
-@app.route('/shoppingcart', methods=['GET'])
+@app.route('/shoppingcart', methods=['POST', 'GET'])
 def shoppingcart():
-    # TODO: display table
     email = session['email']
     info = get_user(email)
     return render_template('shoppingcart.html', user=info[0][1])
@@ -250,7 +248,6 @@ def thank_you(payment_id):
     for p in payment_methods:
         if p[0] == payment_id:
             payment = p[1]
-    print (email, first_name, total_price, payment)
 
     # send email
     with open(os.getcwd() + "/app/static/email.html", "r") as f:
@@ -270,7 +267,6 @@ def thank_you(payment_id):
         'https://api.mailgun.net/v3/{}/messages'.format(domain),
         auth=auth,
         data=data)
-    print (r.status_code)
 
     # update database
     for o in unpaid_orders:
@@ -290,25 +286,19 @@ def price_calculate():
     Return total price.
     """
     box_info = request.get_json()
-    print (box_info)
     box_id_list = [box_id for box_id in box_info]
-    # print ([get_single_box(box_id)["price"] for box_id in box_id_list])
     price_full = [get_single_box(box_id)["price"] * box_info[box_id] for box_id in box_id_list]
     price = sum(price_full)
-    # print (price)
-    return json.dumps({"price" : price})
+    return json.dumps({"price":price, "itemprice":price_full})
 
 @app.route('/place_order', methods=['POST'])
 def place_orders():
     """
     Given order_info, place the order.
     """
-    from datetime import datetime
-    import uuid
     # this dictionary comes from front-end.
     email = session['email']
     order_info = request.get_json()
-    print (order_info)
     order_info["email"] = email
     order_info["create_date"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     order_info["order_id"] = str(uuid.uuid3(uuid.NAMESPACE_DNS, order_info["email"] + order_info["create_date"]))
@@ -324,3 +314,18 @@ def get_email():
     """
     email = session['email']
     return json.dumps({"email" : email})
+
+@app.route('/cancelorder', methods=['POST'])
+def cancelorder():
+    """
+    Given order_id, cancel the order.
+    """
+    email = session['email']
+    orders = get_order(email)
+    order_id = request.get_json()
+    cancel_order(order_id)
+    return "True"
+    # if cancel_order(order_id):
+    #     return "<div>Order cancelled! {}<div/>".format(order_id)
+    # else:
+    #     return "<div>Order does not exist! {}<div/>".format(order_id)
