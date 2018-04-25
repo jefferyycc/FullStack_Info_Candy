@@ -1,9 +1,3 @@
-// add something if we need some interaction in javascript.
-// var elem = document.querySelector('select');
-// var instance = M.FormSelect.init(elem, options);
-
-// Or with jQuery
-
 $(document).ready(function(){
 
 	$('.carousel.carousel-slider').carousel({
@@ -62,16 +56,10 @@ function addItem() {
 			$("#displayshoppingcart").html("");
 
 			var shoppingCart = JSON.parse(localStorage.shoppingCart);
-			console.log(shoppingCart)
 			var itemName = Object.keys(shoppingCart[email]['boxes']);
 			var itemQty = Object.values(shoppingCart[email]['boxes']);
-			console.log(itemName);
-			console.log(itemQty);
 			var itemPrice = shoppingCart[email]['boxprice'];
 			var total_price = shoppingCart[email]['totalPrice'];
-			console.log(itemPrice);
-			console.log(total_price);
-			// Price delay ??
 
 			for (i=0; i<itemName.length; i++) {
 				var item = itemName[i];
@@ -94,13 +82,10 @@ function addItem() {
 					});
 			}
 			var current_total_html = total_html.replace("{{price}}", total_price);
-			console.log(total_price);
 			$("#displayshoppingcart").append(current_total_html);
 		}
-
 		showlist();
     };
-
     req.send();
 }
 
@@ -159,7 +144,6 @@ function addCartDefault() {
 					alert(req_inside.status);
 				}
 		    };
-		    // await sleep(1000);
 		    req_inside.send(JSON.stringify(box));
 		} else {
 			alert(req.status);
@@ -187,9 +171,9 @@ function addCartDIY() {
 			var C4 = parseInt($('input[name="flavor4"]').val());
 
 			Number.prototype.pad = function(size) {
-			  var s = String(this);
-			  while (s.length < (size || 2)) {s = "0" + s;}
-			  return s;
+				var s = String(this);
+				while (s.length < (size || 2)) {s = "0" + s;}
+				return s;
 			};
 			var box_id = C1.pad(2).concat(C2.pad(2), C3.pad(2), C4.pad(2));
 			var qty = parseInt($("#box-num option:selected").val());
@@ -262,8 +246,6 @@ function cancelOrder() {
 		if (req.status === 200) {
 			var data = JSON.parse(req.responseText);
 			var email = data["email"];
-			// var shoppingCart = JSON.parse(localStorage.shoppingCart);
-			// shoppingCartCurrentUser = shoppingCart[email];
 
 			$('tbody').on('click', 'button', function() {
 				var orderID = this.id;
@@ -281,8 +263,8 @@ function cancelOrder() {
 					}
 			    };
 			    req_inside.send(JSON.stringify(orderID));
-
-			})
+			    location.reload(true);
+			});
 
 		} else {
 			alert(req.status);

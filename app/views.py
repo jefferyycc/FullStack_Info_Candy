@@ -247,7 +247,6 @@ def thank_you(payment_id):
     for p in payment_methods:
         if p[0] == payment_id:
             payment = p[1]
-    print (email, first_name, total_price, payment)
 
     # send email
     with open(os.getcwd() + "/app/static/email.html", "r") as f:
@@ -267,7 +266,6 @@ def thank_you(payment_id):
         'https://api.mailgun.net/v3/{}/messages'.format(domain),
         auth=auth,
         data=data)
-    print (r.status_code)
 
     # update database
     for o in unpaid_orders:
@@ -296,7 +294,6 @@ def place_orders():
     # this dictionary comes from front-end.
     email = session['email']    
     order_info = request.get_json()
-    print (order_info)
     order_info["email"] = email
     order_info["create_date"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     order_info["order_id"] = str(uuid.uuid3(uuid.NAMESPACE_DNS, order_info["email"] + order_info["create_date"]))
@@ -321,8 +318,9 @@ def cancelorder():
     email = session['email']
     orders = get_order(email)
     order_id = request.get_json()
-    print (order_id)
-    if cancel_order(order_id):
-        return "<div>Order cancelled! {}<div/>".format(order_id)
-    else:
-        return "<div>Order does not exist! {}<div/>".format(order_id)
+    cancel_order(order_id)
+    return "True"
+    # if cancel_order(order_id):
+    #     return "<div>Order cancelled! {}<div/>".format(order_id)
+    # else:
+    #     return "<div>Order does not exist! {}<div/>".format(order_id)
