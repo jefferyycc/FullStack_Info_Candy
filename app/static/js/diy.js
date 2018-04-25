@@ -31,10 +31,19 @@ function moveChange() {
     $('input[name="flavor3"]').attr('max', size-totalCandy+C3);
     $('input[name="flavor4"]').attr('max', size-totalCandy+C4);
 
+    var needMore = size - totalCandy;
+
     if (totalCandy < size) {
-        var needMore = size - totalCandy;
         $('#alertQty').text('You need ' + needMore + ' more candies!');
     } else {
         $('#alertQty').text('Good to go!');
+    }
+
+    if (totalCandy !== size) {
+        $('button').addClass('disabled');
+        $('#remindQty').text('Choose a smaller box or choose ' + needMore + ' more candies!');
+    } else {
+        $('button').removeClass('disabled');
+        $('#remindQty').text('Good to go!');
     }
 }
