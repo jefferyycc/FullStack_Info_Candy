@@ -31,7 +31,7 @@
             <div class="input-field col s6">
               <input id="email" type="email" class="validate" name="email" required>
               <label for="email">Email</label>
-              <div style="text-align:center;color:red">{{message}}</div>
+              <div style="text-align:center;color:red"><span>{{message}}</span><a href="{{url_for('login')}}">{{login}}</a></div>
             </div>
             <div class="input-field col s6">
               <input id="password" type="password" class="validate" name="password" minlength="6" required>
@@ -59,7 +59,7 @@
             </div>
 
             <div class="input-field col s4 right">
-              <button class="btn btn-large btn-register waves-effect waves-light grey lighten-1" type="submit" name="action">Register
+              <button class="btn btn-large btn-register waves-effect waves-light red lighten-3" type="submit" name="action">Register
                 <i class="material-icons right">done</i>
               </button>
             </div>

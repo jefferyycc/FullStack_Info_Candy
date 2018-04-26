@@ -18,26 +18,26 @@
       <div class="navbar-fixed">
         <nav>
           <div class="nav-wrapper red lighten-3">
-            <a href="#" class="left brand-logo" style='padding-left: 15px'>Mr. J & Miss A</a>
+            <a href="#" class="left brand-logo" style='padding-left: 15px'>Mr. J & Ms. A</a>
 
             <ul id="nav-mobile" class="right" style='padding-right: 15px'>
               <span>Welcome </span><span>{{ user | safe}}</span>
               <li><a href="/choose">Home</a></li>
               <li><a href="/shoppingcart">Shopping Cart</a></li>
-              <li><a href="/order">Order</a></li>      
-              <li><a href="/logout">Log Out</a></li>      
+              <li><a href="/order">Order</a></li>
+              <li><a href="/logout">Log Out</a></li>
             </ul>
           </div>
         </nav>
       </div>
-      
+
     </header>
 
     <div class="container">
       <div class="row" style="text-align:center">
         <h1>Your shopping cart</h1>
-      
-        <form action='/order' method="POST"> 
+
+        <form action='/order' method="POST">
           <table class="striped">
             <thead>
               <tr>
@@ -54,42 +54,42 @@
 
           <input type="hidden" name="notifications" value="{{notifications}}">
             <div class= "place_order" style="margin: 20px">
-            <button class="waves-effect waves-light btn-large grey lighten-1" name="submit" id="submit" style="margin-right: 10px" onclick="placeOrder()"><i class="material-icons right">shopping_cart</i>Place Order</button>
+            <button class="waves-effect waves-light btn-large red lighten-3" name="submit" id="submit" style="margin-right: 10px" onclick="placeOrder()"><i class="material-icons right">shopping_cart</i>Place Order</button>
 
         </form>
 
         <a href="/choose" class="choose">
-          <button class="waves-effect waves-light btn-large grey lighten-1" type="button" style="margin-left: 10px" href="/choose"><i class="material-icons right">add_circle</i>Buy More</button>
+          <button class="waves-effect waves-light btn-large red lighten-3" type="button" style="margin-left: 10px" href="/choose"><i class="material-icons right">add_circle</i>Buy More</button>
         </a>
       </div>
-<!-- 
+
       <h1>You May Also Like...</h1>
 
       <div class="col s4">
         <div class="img_wrap">
-          <img src="/static/pics/default/05000505.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+          <a href="/default"><img src="/static/pics/default/05000505.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/></a>
         </div>
       </div>
 
       <div class="col s4">
         <div class="img_wrap">
-          <img src="/static/pics/default/05050500.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+          <a href="/default"><img src="/static/pics/default/05050500.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/></a>
         </div>
       </div>
 
       <div class="col s4">
         <div class="img_wrap">
-          <img src="/static/pics/default/00050505.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+          <a href="/default"><img src="/static/pics/default/00050505.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/></a>
         </div>
       </div>
- -->
+</div>
     </div>
 
       <footer class="page-footer red lighten-3" style='padding-left: 15px'>
         <div class="footer-copyright red lighten-3">
-          © 2018 Copyright Mr. J & Miss A        
+          © 2018 Copyright Mr. J & Ms. A
         </div>
       </footer>
-      
+
   </body>
 </html>

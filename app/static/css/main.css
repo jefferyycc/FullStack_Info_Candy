@@ -200,11 +200,11 @@ input[type=range]::-webkit-slider-runnable-track {
 	line-height: 1.4;
 }
 
-.img_wrap{
+.img_wrap2 {
 	height: 80px;
 }
 
-.img_size{
+.img_size {
 	height: 50%;
 	width: auto;
 }

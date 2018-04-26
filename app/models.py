@@ -6,7 +6,7 @@ from flask import session, escape
 import sys
 
 def get_connection(db_path='app.db'):
-    return sql.connect(db_path)
+    return sql.connect(db_path, timeout=10)
 
 def check_user(email):
     """
@@ -47,7 +47,7 @@ def login_check(email, password):
 	conn.close()
 	return True if info else False
 
-# add method  
+# add method
 def get_user(email):
 	"""
 	Get user information using email
@@ -84,16 +84,16 @@ def get_single_box(box_id):
     box_info['price'] = price_cal[0][0]
     box_info['calories'] = price_cal[0][1]
     box_info['box_id'] = box_id
-    
+
     return box_info
 
 def place_order(order_info):
 	"""
 	Given order_info, place the order. Insert into order and item tables.
 	input: {'email': 'jiaxun.song@outlook.com',
-			'boxes': {'05000000': 1, '10000500': 3, '00001500': 2}, 
-			'create_date': '2018-04-20 15:25:46', 
-			'order_id': '0956b7a9-2fd4-35e8-8005-57633da3307d', 
+			'boxes': {'05000000': 1, '10000500': 3, '00001500': 2},
+			'create_date': '2018-04-20 15:25:46',
+			'order_id': '0956b7a9-2fd4-35e8-8005-57633da3307d',
 			'total_price': 213.5}
 	output: None
 	"""
