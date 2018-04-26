@@ -178,7 +178,7 @@ def register():
     zip_code = request.form.get("zip_code")
     phone = request.form.get("phone")
     if check_user(email):
-        return render_template("register.html", message="The email already existed in the database!")
+        return render_template("register.html", message="The email already existed in database! Click here to ",login="Log In")
     else:
         insert_user(email, password, first_name, last_name, street, city, state, zip_code, phone)
         return redirect(url_for('show_login'))
@@ -224,7 +224,7 @@ def order():
     email = session['email']
     info = get_user(email)
     orders = get_order(email)
-    return render_template('order.html', orders=orders)
+    return render_template('order.html', orders=orders,user=info[0][1])
 
 @app.route('/shoppingcart', methods=['POST', 'GET'])
 def shoppingcart():
@@ -254,9 +254,9 @@ def thank_you(payment_id):
         email_html = f.read()
     content = email_html.format(first_name, total_price, payment)
 
-    from_email = "<postmaster@sandbox37bfe0bbc27143a28e15b714ac3bc553.mailgun.org>"
+    from_email = "postmaster@sandbox37bfe0bbc27143a28e15b714ac3bc553.mailgun.org"
     data = {
-        'from': 'Mr. J & Miss A' + from_email,
+        'from': from_email,
         'to': email,
         'subject': 'Your order is on the way!',
         'html': content
