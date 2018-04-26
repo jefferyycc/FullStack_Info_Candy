@@ -224,7 +224,7 @@ def order():
     email = session['email']
     info = get_user(email)
     orders = get_order(email)
-    return render_template('order.html', orders=orders)
+    return render_template('order.html', orders=orders, user=info[0][1])
 
 @app.route('/shoppingcart', methods=['POST', 'GET'])
 def shoppingcart():
@@ -276,7 +276,7 @@ def thank_you(payment_id):
         select_payment(order_id, payment_id)
     return render_template('thankyou.html')
 
-@app.route('/thankyou',methods=['POST'])
+@app.route('/thankyou',methods=['GET'])
 def thankyou():
     return render_template('thankyou2.html')
 

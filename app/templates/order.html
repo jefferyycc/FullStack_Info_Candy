@@ -60,30 +60,34 @@
         </table>
         <h1>Choose Payment Type</h1>
 
-        <div class="col s6">
+        <div class="col s4">
           <div class="img_wrap">
-            <a href = "/thank_you/1"> <img src="../static/pics/venmo.png" alt="" id="venmo" class="img-responsive rounded image" style='width:75%;height:260px'/></a>
+            <a href = "/thank_you/1"> <img src="../static/pics/venmo.png" alt="" id="venmo" class="img-responsive rounded image img_size"/></a>
           </div>
         </div>
 
-        <div class="col s6">
+        <div class="col s4">
           <div class="img_wrap">
-            <a href = "/thank_you/2"> <img src="../static/pics/wechat.png" alt="" id="wechat" class="img-responsive rounded image" style='width:75%;height:260px'/></a>
+            <a href = "/thank_you/2"> <img src="../static/pics/wechat.png" alt="" id="wechat" class="img-responsive rounded image img_size"/></a>
           </div>
         </div>
-<!-- 
-        <form action="/thank_you/3">
-          <script
-            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="pk_test_KeWxRITcN5Jegk8uww6yEObg"
-            data-amount=888
-            data-name="Your Order"
-            data-description="total charge"
-            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-            data-locale="auto">
-          </script>
-        </form>
- -->
+
+        <div class="col s4">
+          <div class="img_wrap">
+            <form action="/thankyou" class="img-responsive rounded image img_size">
+              <script
+                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_test_KeWxRITcN5Jegk8uww6yEObg"
+                data-amount=10000
+                data-name="Your Order"
+                data-description="total charge"
+                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                data-locale="auto">
+              </script>
+            </form>
+          </div>
+        </div>
+
       </div>
     </div>
 
