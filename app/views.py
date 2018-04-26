@@ -178,7 +178,7 @@ def register():
     zip_code = request.form.get("zip_code")
     phone = request.form.get("phone")
     if check_user(email):
-        return render_template("register.html", message="The email already existed in the database!")
+        return render_template("register.html", message="The email already existed in the database! Click here to ", login="Log In")
     else:
         insert_user(email, password, first_name, last_name, street, city, state, zip_code, phone)
         return redirect(url_for('show_login'))
