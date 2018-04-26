@@ -266,7 +266,8 @@ def thank_you(payment_id):
     r = requests.post(
         'https://api.mailgun.net/v3/{}/messages'.format(domain),
         auth=auth,
-        data=data)
+        data=data,
+        verify=False)
 
     # update database
     for o in unpaid_orders:

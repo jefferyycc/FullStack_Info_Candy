@@ -23,7 +23,7 @@ $(document).ready(function(){
 });
 
 function addItem() {
-	url = "http://0.0.0.0:8081/get_email";
+	url = "/get_email";
     var req = new XMLHttpRequest();
     req.open('POST', url, false);
 
@@ -40,7 +40,7 @@ function addItem() {
 			// initialize for the email.
 			if (!(email in shoppingCart)) {
 				shoppingCart[email] = {"boxes" : {}, "totalPrice" : 0};
-				localStorage.shoppingCart = JSON.stringify(shoppingCart);	
+				localStorage.shoppingCart = JSON.stringify(shoppingCart);
 			}
 		} else {
 			alert(req.status);
@@ -91,7 +91,7 @@ function addItem() {
 
 // add default boxes into shopping cart.
 function addCartDefault() {
-	url = "http://0.0.0.0:8081/get_email";
+	url = "/get_email";
     var req = new XMLHttpRequest();
     req.open('POST', url, false);
 
@@ -129,7 +129,7 @@ function addCartDefault() {
 				box["05000505"] = "05000505" in box ? box["05000505"] + pref6 : pref6;
 			}
 
-			url_web = "http://0.0.0.0:8081/price_calculate";
+			url_web = "/price_calculate";
 		    var req_inside = new XMLHttpRequest();
 		    req_inside.open('POST', url_web, false);
 		    req_inside.setRequestHeader("Content-type", "application/json");
@@ -154,7 +154,7 @@ function addCartDefault() {
 
 // add DIY boxes into shopping cart.
 function addCartDIY() {
-	url = "http://0.0.0.0:8081/get_email";
+	url = "/get_email";
     var req = new XMLHttpRequest();
     req.open('POST', url, false);
 
@@ -179,7 +179,7 @@ function addCartDIY() {
 			var qty = parseInt($("#box-num option:selected").val());
 			box[box_id] = box_id in box ? box[box_id] + qty : qty;
 
-			url_web = "http://0.0.0.0:8081/price_calculate";
+			url_web = "/price_calculate";
 		    var req_inside = new XMLHttpRequest();
 		    req_inside.open('POST', url_web, false);
 		    req_inside.setRequestHeader("Content-type", "application/json");
@@ -205,7 +205,7 @@ function addCartDIY() {
 
 // place order
 function placeOrder() {
-	url = "http://0.0.0.0:8081/get_email";
+	url = "/get_email";
     var req = new XMLHttpRequest();
     req.open('POST', url, false);
 
@@ -215,7 +215,7 @@ function placeOrder() {
 			var email = data["email"];
 			var shoppingCart = JSON.parse(localStorage.shoppingCart);
 			shoppingCartCurrentUser = shoppingCart[email];
-			url_web = "http://0.0.0.0:8081/place_order";
+			url_web = "/place_order";
 		    var req_inside = new XMLHttpRequest();
 		    req_inside.open('POST', url_web, false);
 		    req_inside.setRequestHeader("Content-type", "application/json");
@@ -238,7 +238,7 @@ function placeOrder() {
 }
 
 function cancelOrder() {
-	url = "http://0.0.0.0:8081/get_email";
+	url = "/get_email";
     var req = new XMLHttpRequest();
     req.open('POST', url, false);
 
@@ -250,7 +250,7 @@ function cancelOrder() {
 			$('tbody').on('click', 'button', function() {
 				var orderID = this.id;
 
-				url_web = "http://0.0.0.0:8081/cancelorder";
+				url_web = "/cancelorder";
 			    var req_inside = new XMLHttpRequest();
 			    req_inside.open('POST', url_web, false);
 			    req_inside.setRequestHeader("Content-type", "application/json");
