@@ -22,6 +22,7 @@ $(document).ready(function(){
 
 });
 
+// get items in localStorage according to the logged-in email verified by web server
 function addItem() {
 	url = "/get_email";
     var req = new XMLHttpRequest();
@@ -46,21 +47,22 @@ function addItem() {
 			alert(req.status);
 		}
 
+		// show items in localStorage in the shopping cart page
 		var item_html = "<tr id={{id}} class='buy_item'><td>{{item}}</td><td class='qty'>{{qty}}</td><td class='price'>{{price}}</td><td id={{del_id}} data-del-id='{{delid}}' class='del_btn'>Remove Item</td></tr>";
-
 		var total_html = "<tr class='buy_item total'><td>Total Price</td><td></td><td class='price'>{{price}}</td></tr>";
-
-		// show shopping cart
 		function showlist(){
 
+			// reset the container of shopping cart to avoid duplicate items
 			$("#displayshoppingcart").html("");
 
+			// store all items in localStorage
 			var shoppingCart = JSON.parse(localStorage.shoppingCart);
 			var itemName = Object.keys(shoppingCart[email]['boxes']);
 			var itemQty = Object.values(shoppingCart[email]['boxes']);
 			var itemPrice = shoppingCart[email]['boxprice'];
 			var total_price = shoppingCart[email]['totalPrice'];
 
+			// display all items in localStorage
 			for (i=0; i<itemName.length; i++) {
 				var item = itemName[i];
 				var qty = itemQty[i];
@@ -72,6 +74,7 @@ function addItem() {
 
 				$("#displayshoppingcart").append(current_item_html);
 
+				// functional 'remove item' button
 				$("#"+del_item_id).click(
 					function(){
 						id = $(this).attr("data-del-id");
@@ -109,6 +112,8 @@ function addCartDefault() {
 			var pref5 = parseInt($("#pref5 option:selected").val());
 			var pref6 = parseInt($("#pref6 option:selected").val());
 
+			// get all boxes and amounts selected by users
+			// combine the amounts of the same boxes if any
 			var box = shoppingCart[email]["boxes"];
 			if (pref1 !== 0 && !!pref1) {
 				box["10000000"] = "10000000" in box ? box["10000000"] + pref1 : pref1;
@@ -129,11 +134,13 @@ function addCartDefault() {
 				box["05000505"] = "05000505" in box ? box["05000505"] + pref6 : pref6;
 			}
 
+			// calculate the prices of boxes by web server
 			url_web = "/price_calculate";
 		    var req_inside = new XMLHttpRequest();
 		    req_inside.open('POST', url_web, false);
 		    req_inside.setRequestHeader("Content-type", "application/json");
 		    req_inside.onload = function() {
+				// store users' selected boxes, amounts and prices in localStorage
 				if (req_inside.status === 200) {
 					var data = JSON.parse(req_inside.responseText);
 					shoppingCart[email]["boxes"] = box;
@@ -170,21 +177,26 @@ function addCartDIY() {
 			var C3 = parseInt($('input[name="flavor3"]').val());
 			var C4 = parseInt($('input[name="flavor4"]').val());
 
+			// standardize the box_id in 8-digit to fit the database
 			Number.prototype.pad = function(size) {
 				var s = String(this);
 				while (s.length < (size || 2)) {s = "0" + s;}
 				return s;
 			};
 			var box_id = C1.pad(2).concat(C2.pad(2), C3.pad(2), C4.pad(2));
+
 			var qty = parseInt($("#box-num option:selected").val());
+
+			// combine the amounts of the same boxes if any
 			box[box_id] = box_id in box ? box[box_id] + qty : qty;
 
+			// calculate the prices of boxes by web server
 			url_web = "/price_calculate";
 		    var req_inside = new XMLHttpRequest();
 		    req_inside.open('POST', url_web, false);
 		    req_inside.setRequestHeader("Content-type", "application/json");
-
 		    req_inside.onload = function() {
+				// store users' selected boxes, amounts and prices in localStorage
 				if (req_inside.status === 200) {
 					var data = JSON.parse(req_inside.responseText);
 					shoppingCart[email]["boxes"] = box;
@@ -215,6 +227,8 @@ function placeOrder() {
 			var email = data["email"];
 			var shoppingCart = JSON.parse(localStorage.shoppingCart);
 			shoppingCartCurrentUser = shoppingCart[email];
+
+			// call the function in web server to place orders in the database
 			url_web = "/place_order";
 		    var req_inside = new XMLHttpRequest();
 		    req_inside.open('POST', url_web, false);
@@ -237,6 +251,7 @@ function placeOrder() {
     req.send();
 }
 
+// cancel placed order
 function cancelOrder() {
 	url = "/get_email";
     var req = new XMLHttpRequest();
@@ -250,6 +265,7 @@ function cancelOrder() {
 			$('tbody').on('click', 'button', function() {
 				var orderID = this.id;
 
+				// call the function in web server to cancel orders in the database
 				url_web = "/cancelorder";
 			    var req_inside = new XMLHttpRequest();
 			    req_inside.open('POST', url_web, false);
