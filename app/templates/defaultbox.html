@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html>
   <head>
     <!-- Compiled and minified CSS -->
@@ -31,246 +33,247 @@
     </header>
 
     <div class="container">
-    <div class="row" style="text-align:center">
-      <h1>Select Your Candies</h1>
-      
-
-    <div class="col s4">
-      <div class="img_wrap">
-
-        <img src="/static/pics/default/{{box1.box_id}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
-              
+      <div class="row" style="text-align:center">
+        <h1>Select Your Candies</h1>
+        
         <form class="middle" id="order" action="shoppingcart">
-        <div class="text">
-          Total: {{box1.total}} pieces<br>
-          {% if box1.C1 != 0 %}
-            {{box1.C1}} No. 1 Candy<br>
-          {% endif %}
-          {% if box1.C2 != 0 %}
-            {{box1.C2}} No. 2 Candy<br>
-          {% endif %}
-          {% if box1.C3 != 0 %}
-            {{box1.C3}} No. 3 Candy<br>
-          {% endif %}
-          {% if box1.C4 != 0 %}
-            {{box1.C4}} No. 4 Candy
-          {% endif %}
-        </div>
-        
-        <div class="text"><span>Price: $</span>{{box1.price}}</div>
-        <div style="padding:5px"></div>
-        
-        <div class="input-field col s12">
-          <select id="pref1" name="pref1">
-            <option value="" disabled selected>Quantity</option>
-            <option value=0>0</option>
-            <option value=1>1</option>
-            <option value=2>2</option>
-            <option value=3>3</option>
-            <option value=4>4</option>
-            <option value=5>5</option>
-          </select>
-        </div>
 
-      </div>
-    </div>
+          <div class="col s4">
+            <div class="img_wrap">
 
-    <div class="col s4">
-      <div class="img_wrap">
-        
-        <img src="/static/pics/default/{{box2.box_id}}.jpg" alt="" id="image2" class="img-responsive rounded image" style='width:100%;height:260px'/>
-            
-        <div class="text">
-          Total: {{box2.total}} pieces<br>
-          {% if box2.C1 != 0 %}
-            {{box2.C1}} No. 1 Candy<br>
-          {% endif %}
-          {% if box2.C2 != 0 %}
-            {{box2.C2}} No. 2 Candy<br>
-          {% endif %}
-          {% if box2.C3 != 0 %}
-            {{box2.C3}} No. 3 Candy<br>
-          {% endif %}
-          {% if box2.C4 != 0 %}
-            {{box2.C4}} No. 4 Candy
-          {% endif %}
-        </div>
+              <img src="/static/pics/default/{{box1.box_id}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+                    
+              <div class="text">
+                Total: {{box1.total}} pieces<br>
+                {% if box1.C1 != 0 %}
+                  {{box1.C1}} No. 1 Candy<br>
+                {% endif %}
+                {% if box1.C2 != 0 %}
+                  {{box1.C2}} No. 2 Candy<br>
+                {% endif %}
+                {% if box1.C3 != 0 %}
+                  {{box1.C3}} No. 3 Candy<br>
+                {% endif %}
+                {% if box1.C4 != 0 %}
+                  {{box1.C4}} No. 4 Candy
+                {% endif %}
+              </div>
+              
+              <div class="text"><span>Price: $</span>{{box1.price}}</div>
+              <div style="padding:5px"></div>
+              
+              <div class="input-field col s12">
+                <select id="pref1" name="pref1">
+                  <option value="" disabled selected>Quantity</option>
+                  <option value=0>0</option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                </select>
+              </div>
 
-        <div class="text"><span>Price: $</span>{{box2.price}}</div>
-        <div style="padding:5px"></div>
-            
-        <div class="input-field col s12">
-          <select id="pref2" name="pref2">
-            <option value="" disabled selected>Quantity</option>
-            <option value=0>0</option>
-            <option value=1>1</option>
-            <option value=2>2</option>
-            <option value=3>3</option>
-            <option value=4>4</option>
-            <option value=5>5</option>
-          </select>
-        </div>
+            </div> <!-- box1 .img_wrap -->
+          </div> <!-- box1 .col .s4 -->
 
-      </div>
-    </div>
+          <div class="col s4">
+            <div class="img_wrap">
+              
+              <img src="/static/pics/default/{{box2.box_id}}.jpg" alt="" id="image2" class="img-responsive rounded image" style='width:100%;height:260px'/>
+                  
+              <div class="text">
+                Total: {{box2.total}} pieces<br>
+                {% if box2.C1 != 0 %}
+                  {{box2.C1}} No. 1 Candy<br>
+                {% endif %}
+                {% if box2.C2 != 0 %}
+                  {{box2.C2}} No. 2 Candy<br>
+                {% endif %}
+                {% if box2.C3 != 0 %}
+                  {{box2.C3}} No. 3 Candy<br>
+                {% endif %}
+                {% if box2.C4 != 0 %}
+                  {{box2.C4}} No. 4 Candy
+                {% endif %}
+              </div>
 
-    <div class="col s4">
-      <div class="img_wrap">
-        
-        <img src="/static/pics/default/{{box3.box_id}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
-        
-        <div class="text">
-          Total: {{box3.total}} pieces<br>
-          {% if box3.C1 != 0 %}
-            {{box3.C1}} No. 1 Candy<br>
-          {% endif %}
-          {% if box3.C2 != 0 %}
-            {{box3.C2}} No. 2 Candy<br>
-          {% endif %}
-          {% if box3.C3 != 0 %}
-            {{box3.C3}} No. 3 Candy<br>
-          {% endif %}
-          {% if box3.C4 != 0 %}
-            {{box3.C4}} No. 4 Candy
-          {% endif %}
-        </div>
+              <div class="text"><span>Price: $</span>{{box2.price}}</div>
+              <div style="padding:5px"></div>
+                  
+              <div class="input-field col s12">
+                <select id="pref2" name="pref2">
+                  <option value="" disabled selected>Quantity</option>
+                  <option value=0>0</option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                </select>
+              </div>
 
-        <div class="text"><span>Price: $</span>{{box3.price}}</div>
-        <div style="padding:5px"></div>
-            
-        <div class="input-field col s12">
-          <select id="pref3" name="pref3">
-            <option value="" disabled selected>Quantity</option>
-            <option value=0>0</option>
-            <option value=1>1</option>
-            <option value=2>2</option>
-            <option value=3>3</option>
-            <option value=4>4</option>
-            <option value=5>5</option>
-          </select>
-        </div>
+            </div> <!-- box2 .img_wrap -->
+          </div> <!-- box2 .col .s4 -->
 
-      </div>
-    </div>
+          <div class="col s4">
+            <div class="img_wrap">
+              
+              <img src="/static/pics/default/{{box3.box_id}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+              
+              <div class="text">
+                Total: {{box3.total}} pieces<br>
+                {% if box3.C1 != 0 %}
+                  {{box3.C1}} No. 1 Candy<br>
+                {% endif %}
+                {% if box3.C2 != 0 %}
+                  {{box3.C2}} No. 2 Candy<br>
+                {% endif %}
+                {% if box3.C3 != 0 %}
+                  {{box3.C3}} No. 3 Candy<br>
+                {% endif %}
+                {% if box3.C4 != 0 %}
+                  {{box3.C4}} No. 4 Candy
+                {% endif %}
+              </div>
 
-    <div class="col s4">
-      <div class="img_wrap">
-        <img src="/static/pics/default/{{box4.box_id}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+              <div class="text"><span>Price: $</span>{{box3.price}}</div>
+              <div style="padding:5px"></div>
+                  
+              <div class="input-field col s12">
+                <select id="pref3" name="pref3">
+                  <option value="" disabled selected>Quantity</option>
+                  <option value=0>0</option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                </select>
+              </div>
 
-        <div class="text">
-          Total: {{box4.total}} pieces<br>
-          {% if box4.C1 != 0 %}
-            {{box4.C1}} No. 1 Candy<br>
-          {% endif %}
-          {% if box4.C2 != 0 %}
-            {{box4.C2}} No. 2 Candy<br>
-          {% endif %}
-          {% if box4.C3 != 0 %}
-            {{box4.C3}} No. 3 Candy<br>
-          {% endif %}
-          {% if box4.C4 != 0 %}
-            {{box4.C4}} No. 4 Candy
-          {% endif %}
-        </div>
+            </div> <!-- box3 .img_wrap -->
+          </div> <!-- box3 .col .s4 -->
 
-        <div class="text"><span>Price: $</span>{{box4.price}}</div>
-        <div style="padding:5px"></div>
-            
-        <div class="input-field col s12">
-          <select id="pref4" name="pref4">
-            <option value="" disabled selected>Quantity</option>
-            <option value=0>0</option>
-            <option value=1>1</option>
-            <option value=2>2</option>
-            <option value=3>3</option>
-            <option value=4>4</option>
-            <option value=5>5</option>
-          </select>
-        </div>
+          <div class="col s4">
+            <div class="img_wrap">
+              <img src="/static/pics/default/{{box4.box_id}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
 
-      </div>
-    </div>
+              <div class="text">
+                Total: {{box4.total}} pieces<br>
+                {% if box4.C1 != 0 %}
+                  {{box4.C1}} No. 1 Candy<br>
+                {% endif %}
+                {% if box4.C2 != 0 %}
+                  {{box4.C2}} No. 2 Candy<br>
+                {% endif %}
+                {% if box4.C3 != 0 %}
+                  {{box4.C3}} No. 3 Candy<br>
+                {% endif %}
+                {% if box4.C4 != 0 %}
+                  {{box4.C4}} No. 4 Candy
+                {% endif %}
+              </div>
 
-    <div class="col s4">
-      <div class="img_wrap">
-        <img src="/static/pics/default/{{box5.box_id}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+              <div class="text"><span>Price: $</span>{{box4.price}}</div>
+              <div style="padding:5px"></div>
+                  
+              <div class="input-field col s12">
+                <select id="pref4" name="pref4">
+                  <option value="" disabled selected>Quantity</option>
+                  <option value=0>0</option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                </select>
+              </div>
 
-        <div class="text">
-          Total: {{box5.total}} pieces<br>
-          {% if box5.C1 != 0 %}
-            {{box5.C1}} No. 1 Candy<br>
-          {% endif %}
-          {% if box5.C2 != 0 %}
-            {{box5.C2}} No. 2 Candy<br>
-          {% endif %}
-          {% if box5.C3 != 0 %}
-            {{box5.C3}} No. 3 Candy<br>
-          {% endif %}
-          {% if box5.C4 != 0 %}
-            {{box5.C4}} No. 4 Candy
-          {% endif %}
-        </div>
+            </div> <!-- box4 .img_wrap -->
+          </div> <!-- box4 .col .s4 -->
 
-          <div class="text"><span>Price: $</span>{{box5.price}}</div>
-          <div style="padding:5px"></div>
-            
-          <div class="input-field col s12">
-            <select id="pref5" name="pref5">
-              <option value="" disabled selected>Quantity</option>
-              <option value=0>0</option>
-              <option value=1>1</option>
-              <option value=2>2</option>
-              <option value=3>3</option>
-              <option value=4>4</option>
-              <option value=5>5</option>
-            </select>
-          </div>
-      </div>
-    </div>
+          <div class="col s4">
+            <div class="img_wrap">
+              <img src="/static/pics/default/{{box5.box_id}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
 
-    <div class="col s4">
-      <div class="img_wrap">
-        <img src="/static/pics/default/{{box6.box_id}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
+              <div class="text">
+                Total: {{box5.total}} pieces<br>
+                {% if box5.C1 != 0 %}
+                  {{box5.C1}} No. 1 Candy<br>
+                {% endif %}
+                {% if box5.C2 != 0 %}
+                  {{box5.C2}} No. 2 Candy<br>
+                {% endif %}
+                {% if box5.C3 != 0 %}
+                  {{box5.C3}} No. 3 Candy<br>
+                {% endif %}
+                {% if box5.C4 != 0 %}
+                  {{box5.C4}} No. 4 Candy
+                {% endif %}
+              </div>
 
-        <div class="text">
-          Total: {{box6.total}} pieces<br>
-          {% if box6.C1 != 0 %}
-            {{box6.C1}} No. 1 Candy<br>
-          {% endif %}
-          {% if box6.C2 != 0 %}
-            {{box6.C2}} No. 2 Candy<br>
-          {% endif %}
-          {% if box6.C3 != 0 %}
-            {{box6.C3}} No. 3 Candy<br>
-          {% endif %}
-          {% if box6.C4 != 0 %}
-            {{box6.C4}} No. 4 Candy
-          {% endif %}
-        </div>
+              <div class="text"><span>Price: $</span>{{box5.price}}</div>
+              <div style="padding:5px"></div>
+                
+              <div class="input-field col s12">
+                <select id="pref5" name="pref5">
+                  <option value="" disabled selected>Quantity</option>
+                  <option value=0>0</option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                </select>
+              </div>
 
-            <div class="text"><span>Price: $</span>{{box6.price}}</div>
-            <div style="padding:5px"></div>
-            
-          <div class="input-field col s12">
-            <select id="pref6" name="pref6">
-              <option value="" disabled selected>Quantity</option>
-              <option value=0>0</option>
-              <option value=1>1</option>
-              <option value=2>2</option>
-              <option value=3>3</option>
-              <option value=4>4</option>
-              <option value=5>5</option>
-            </select>
-          </div>
-          
-      </div>
-    </div>
+            </div> <!-- box5 .img_wrap -->
+          </div> <!-- box5 .col .s4 -->
 
-      <button class="waves-effect waves-light btn-large red lighten-3" onclick="addCartDefault()">Add to Cart</button>
-    </form>
+          <div class="col s4">
+            <div class="img_wrap">
+              <img src="/static/pics/default/{{box6.box_id}}.jpg" alt="" id="image1" class="img-responsive rounded image" style='width:100%;height:260px'/>
 
-  </div>
-  </div>
+              <div class="text">
+                Total: {{box6.total}} pieces<br>
+                {% if box6.C1 != 0 %}
+                  {{box6.C1}} No. 1 Candy<br>
+                {% endif %}
+                {% if box6.C2 != 0 %}
+                  {{box6.C2}} No. 2 Candy<br>
+                {% endif %}
+                {% if box6.C3 != 0 %}
+                  {{box6.C3}} No. 3 Candy<br>
+                {% endif %}
+                {% if box6.C4 != 0 %}
+                  {{box6.C4}} No. 4 Candy
+                {% endif %}
+              </div>
+
+              <div class="text"><span>Price: $</span>{{box6.price}}</div>
+              <div style="padding:5px"></div>
+                
+              <div class="input-field col s12">
+                <select id="pref6" name="pref6">
+                  <option value="" disabled selected>Quantity</option>
+                  <option value=0>0</option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                </select>
+              </div>
+                
+            </div> <!-- box6 .img_wrap -->
+          </div> <!-- box6 .col .s4 -->
+
+          <button class="waves-effect waves-light btn-large red lighten-3" onclick="addCartDefault()">Add to Cart</button>
+        </form>
+
+      </div> <!-- .row -->
+    </div> <!-- .container -->
 
     <footer class="page-footer red lighten-3" style='padding-left: 15px'>
       <div class="footer-copyright red lighten-3">
