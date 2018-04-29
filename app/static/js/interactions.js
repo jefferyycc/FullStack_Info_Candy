@@ -242,6 +242,7 @@ function placeOrder() {
 				}
 		    };
 		    req_inside.send(JSON.stringify(shoppingCartCurrentUser));
+		    // clear localStorage to prevent placing duplicate order
 		    delete shoppingCart[email];
 		    localStorage.shoppingCart = JSON.stringify(shoppingCart);
 		} else {
